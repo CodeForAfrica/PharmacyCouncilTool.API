@@ -5,13 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Pharmacy;
 
+use Unlu\Laravel\Api\QueryBuilder;
+
 class PharmacyController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $queryBuilder = new QueryBuilder(new Pharmacy, $request);
         return response()->json([
-            'pharmacies' => Pharmacy::all()
-        ], 200);
+            'pharmacies' => $queryBuilder->build()->get()
+        ],200);
     }
 
     public function show(Pharmacy $pharmacy)
