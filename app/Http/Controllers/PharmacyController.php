@@ -28,14 +28,18 @@ class PharmacyController extends Controller
     {
         $pharmacy = Pharmacy::create($request->all());
 
-        return response()->json($pharmacy, 201);
+        return response()->json([
+            'pharmacy' => $pharmacy
+        ], 201);
     }
 
     public function update(Request $request, Pharmacy $pharmacy)
     {
         $pharmacy->update($request->all());
 
-        return response()->json($pharmacy, 200);
+        return response()->json([
+            'pharmacy' => $pharmacy
+        ], 200);
     }
 
     public function delete(Pharmacy $pharmacy)
