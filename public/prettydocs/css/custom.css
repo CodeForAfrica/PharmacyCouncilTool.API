@@ -1,0 +1,18 @@
+code
+{
+  padding-top: 2px;
+  margin-bottom: 3px;
+}
+
+.header{
+  background: #3e4395;
+  border-top-color: #ff73b3;
+}
+
+.header .logo{
+  color: #fff;
+}
+
+.footer{
+  background: #3c3f63;
+}
