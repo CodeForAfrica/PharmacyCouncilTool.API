@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
             'name' => "Administrator",
             'email' => "admin@codefortanzania.org",
             'password' => bcrypt('123456'),
-            'api_key' => str_random(60)
+            'api_token' => str_random(60)
         ]);
     }
 }
