@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
         User::truncate();
 
         // Creating a demo user in our database.
-        Pharmacy::create([
+        User::create([
             'name' => "Administrator",
             'email' => "admin@codefortanzania.org",
             'password' => bcrypt('123456'),
