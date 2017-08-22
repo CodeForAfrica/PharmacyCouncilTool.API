@@ -19,21 +19,24 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 */
 
-Route::group(['middleware' => 'auth:api'], function(){
-    // Pharmacies API Route
-    Route::get('pharmacies/{pharmacy}', 'PharmacyController@show');
+Route::group(['middleware' => ['auth:api','cors']], function(){
+    // Pharmacies API routes with Token.
     Route::post('pharmacies', 'PharmacyController@store');
     Route::put('pharmacies/{pharmacy}', 'PharmacyController@update');
     Route::delete('pharmacies/{pharmacy}', 'PharmacyController@delete');
 
-    // Reports API Route
+    // Reports API route.
     Route::get('reports', 'ReportController@index');
     Route::get('reports/{report}', 'ReportController@show');
-    Route::post('reports', 'ReportController@store');
     Route::put('reports/{report}', 'ReportController@update');
     Route::delete('reports/{report}', 'ReportController@delete');
 });
 
 Route::group(['middleware' => 'cors'], function(){
+    // Pharmacies API Routes without Token.
     Route::get('pharmacies', 'PharmacyController@index');
+    Route::get('pharmacies/{pharmacy}', 'PharmacyController@show');
+
+    // Reports API routes without Token.
+    Route::post('reports', 'ReportController@store');
 });

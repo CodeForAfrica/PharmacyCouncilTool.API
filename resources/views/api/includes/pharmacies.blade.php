@@ -82,7 +82,7 @@
     <div id="listing-pharmacies"  class="section-block">
         <h3 class="block-title">Listing pharmacies</h3>
 <pre class="language-javascript">
-<code>GET /api/pharmacies?api_token={YOUR_API_TOKEN_KEY}
+<code>GET /api/pharmacies
 </code>
 </pre>
       <div class="table-responsive">
@@ -96,7 +96,7 @@
           <tbody>
               <tr>
                   <td>api_token</td>
-                  <td>Your <strong>API TOKEN KEY</strong></td>
+                  <td><strong>NOT REQUIRED</strong></td>
               </tr>
               <tr>
                   <td>page</td>
@@ -120,7 +120,7 @@
 
       <h4>Sample Request</h4>
 <pre class="language-javascript">
-<code>GET /api/pharmacies?limit=1&order_by=date_registered,asc&api_token={YOUR_API_TOKEN_KEY}
+<code>GET /api/pharmacies?limit=1&order_by=date_registered,asc
 </code>
 </pre>
 
@@ -159,7 +159,7 @@ Content-Type: application/json; charset=utf-8
     <div id="getting-pharmacy"  class="section-block">
         <h3 class="block-title">Getting a single pharmacy</h3>
 <pre class="language-javascript">
-<code>GET /api/pharmacies/id?api_token={YOUR_API_TOKEN_KEY}
+<code>GET /api/pharmacies/id
 </code>
 </pre>
       <div class="table-responsive">
@@ -173,7 +173,7 @@ Content-Type: application/json; charset=utf-8
           <tbody>
               <tr>
                   <td>api_token</td>
-                  <td>Your <strong>API TOKEN KEY</strong></td>
+                  <td><strong>NOT REQUIRED</strong></td>
               </tr>
           </tbody>
         </table>
@@ -181,7 +181,7 @@ Content-Type: application/json; charset=utf-8
 
       <h4>Sample Request</h4>
 <pre class="language-javascript">
-<code>GET /api/pharmacies/11?api_token={YOUR_API_TOKEN_KEY}
+<code>GET /api/pharmacies/11
 </code>
 </pre>
 

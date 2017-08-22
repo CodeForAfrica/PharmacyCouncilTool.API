@@ -247,7 +247,7 @@ Content-Type: application/json; charset=utf-8
     <div id="creating-report"  class="section-block">
         <h3 class="block-title">Creating a new report</h3>
 <pre class="language-javascript">
-<code>POST /api/reports?api_token={YOUR_API_TOKEN_KEY}
+<code>POST /api/reports
 </code>
 </pre>
 

@@ -2,7 +2,7 @@
 <section id="authentication-section" class="doc-section">
     <h2 class="section-title">Authentication</h2>
     <div class="section-block">
-        <p>API is using <strong>Token</strong> for verifying the request. 
+        <p>Most API calls are using <strong>Token</strong> for verifying the request. 
         You need to be an authorized user to obtain your API Token Key for more information and 
         token request contact Pharmacy Reporting Tool Administrators.
         </p>
