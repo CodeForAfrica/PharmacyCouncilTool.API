@@ -4,7 +4,7 @@
     <div class="section-block" style="">
         <p>Some endpoints offer result sorting, triggered using the <code>order_by</code> query parameter. You can specify descending sort by postpending <code>desc</code> to a field. Not all fields can be sorted on. The endpoint documentation will list supported sort options.</p>
 <pre class="language-javascript">
-<code>GET /api/pharmacies?order_by=date_registered,desc&api_token={YOUR_API_TOKEN_KEY}
+<code>GET /api/pharmacies?order_by=date_registered,desc
 </code>
 </pre>
     </div>

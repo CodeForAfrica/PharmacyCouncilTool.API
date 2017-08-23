@@ -46,7 +46,7 @@
         <div class="container">
             <div id="doc-header" class="doc-header text-center">
                 <h1 class="doc-title"><i class="icon fa fa-paper-plane"></i> Quick Start</h1>
-                <div class="meta"><i class="fa fa-clock-o"></i> Last updated: August 16th, 2017</div>
+                <div class="meta"><i class="fa fa-clock-o"></i> Last updated: August 23rd, 2017</div>
             </div><!--//doc-header-->
             <div class="doc-body">
                 <div class="doc-content">

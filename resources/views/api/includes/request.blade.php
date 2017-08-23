@@ -3,7 +3,7 @@
     <h2 class="section-title">Requests</h2>
     <div class="section-block">
         <p>
-        	The base URL of the API is http://pharmacies.codefortanzania.org/api to access and send your requests.
+        	The base URL of the API is http://htools-tz-pharmacy-reporting-tool-api.dokku-1.codefortanzania.org/api to access and send your requests.
         </p>
 
         <h3>JSON Bodies</h3>
@@ -13,8 +13,7 @@
 
         <div class="code-block">
 <pre>
-<code class="language-javascript">$ curl http://pharmacies.codefortanzania.org/api/pharmacies/23?api_token={YOUR_API_TOKEN_KEY} \
--X PATCH \
+<code class="language-javascript">$ curl http://htools-tz-pharmacy-reporting-tool-api.dokku-1.codefortanzania.org/api/pharmacies/23 \
 -H 'Content-Type: application/json' \
 -d '{"registration_number":"543abc"}'
 </code>
@@ -48,7 +47,7 @@
       	<p>If you are using an HTTP client that doesn't support <code>PUT</code>, <code>PATCH</code> or <code>DELETE</code> requests, send a <code>POST</code> request with an <code>X-HTTP-Method-Override</code> header specifying the desired verb.</p>
 
 <pre>
-<code class="language-javascript">$ curl http://pharmacies.codefortanzania.org/api/pharmacies/23?api_token={YOUR_API_TOKEN_KEY} \
+<code class="language-javascript">$ curl http://htools-tz-pharmacy-reporting-tool-api.dokku-1.codefortanzania.org/api/pharmacies/23 \
 -X POST \
 -H "X-HTTP-Method-Override: DELETE"
 </code>

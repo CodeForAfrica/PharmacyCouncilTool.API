@@ -5,7 +5,7 @@
         <p>All responses from the API can limit fields to only the fields you need. Just pass in a columns query parameter with a comma separated list of fields you need</p>
         <p>For example:</p>
 <pre class="language-javascript">
-<code>GET /api/pharmacies?columns=registration_number,pharmacist&api_token={YOUR_API_TOKEN_KEY}
+<code>GET /api/pharmacies?columns=registration_number,pharmacist
 </code>
 </pre>
 

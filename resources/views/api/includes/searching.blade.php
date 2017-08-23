@@ -7,7 +7,7 @@
         Not all fields can be sorted on. 
         The endpoint documentation will list supported sort options.</p>
 <pre class="language-javascript">
-<code>GET /api/pharmacies?registration_number=ab453ciu&api_token={YOUR_API_TOKEN_KEY}
+<code>GET /api/pharmacies?registration_number=ab453ciu
 </code>
 </pre>
     </div>
