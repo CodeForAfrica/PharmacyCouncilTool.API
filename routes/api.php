@@ -30,6 +30,13 @@ Route::group(['middleware' => ['auth:api','cors']], function(){
     Route::get('reports/{report}', 'ReportController@show');
     Route::put('reports/{report}', 'ReportController@update');
     Route::delete('reports/{report}', 'ReportController@delete');
+
+    // Users API route.
+    Route::get('users', 'UserController@index');
+    Route::get('users/{user}', 'UserController@show');
+    Route::post('users', 'UserController@store');
+    Route::put('users/{user}', 'userController@update');
+    Route::delete('users/{user}', 'userController@delete');
 });
 
 Route::group(['middleware' => 'cors'], function(){
@@ -39,4 +46,8 @@ Route::group(['middleware' => 'cors'], function(){
 
     // Reports API routes without Token.
     Route::post('reports', 'ReportController@store');
+
+    // User Login API Routes without Token.
+    Route::get('user/login', 'Auth\APILoginController@index');
+    Route::get('user/auth', 'Auth\APILoginController@getAuthenticatedUser');
 });
