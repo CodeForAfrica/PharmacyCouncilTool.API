@@ -35,8 +35,8 @@ Route::group(['middleware' => ['auth:api','cors']], function(){
     Route::get('users', 'UserController@index');
     Route::get('users/{user}', 'UserController@show');
     Route::post('users', 'UserController@store');
-    Route::put('users/{user}', 'userController@update');
-    Route::delete('users/{user}', 'userController@delete');
+    Route::put('users/{user}', 'UserController@update');
+    Route::delete('users/{user}', 'UserController@delete');
 });
 
 Route::group(['middleware' => 'cors'], function(){
