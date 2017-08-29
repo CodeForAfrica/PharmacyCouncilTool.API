@@ -12,10 +12,25 @@ class ReportController extends Controller
     public function index(Request $request)
     {
         $queryBuilder = new QueryBuilder(new Report, $request);
-        return response()->json([
-            'status' => 200,
-            'reports' => $queryBuilder->build()->get()
-        ],200);
+        
+        // Single Report
+        if($request->limit && $request->limit == 1)
+        {
+            $report = json_decode("{}");
+            if(isset($queryBuilder->build()->get()[0]))
+                $report = $queryBuilder->build()->get()[0];
+            return response()->json([
+                'status' => 200,
+                'report' => $report
+            ],200);
+        }
+        else
+        {
+            return response()->json([
+                'status' => 200,
+                'reports' => $queryBuilder->build()->get()
+            ],200);
+        }
     }
 
     public function show(Report $report)

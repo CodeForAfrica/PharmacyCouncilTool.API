@@ -12,10 +12,25 @@ class PharmacyController extends Controller
     public function index(Request $request)
     {
         $queryBuilder = new QueryBuilder(new Pharmacy, $request);
-        return response()->json([
-            'status' => 200,
-            'pharmacies' => $queryBuilder->build()->get()
-        ],200);
+        
+        // Single Pharmacy
+        if($request->limit && $request->limit == 1)
+        {
+            $pharmacy = json_decode("{}");
+            if(isset($queryBuilder->build()->get()[0]))
+                $pharmacy = $queryBuilder->build()->get()[0];
+            return response()->json([
+                'status' => 200,
+                'pharmacy' => $pharmacy
+            ],200);
+        }
+        else
+        {
+            return response()->json([
+                'status' => 200,
+                'pharmacies' => $queryBuilder->build()->get()
+            ],200);
+        }
     }
 
     public function show(Pharmacy $pharmacy)

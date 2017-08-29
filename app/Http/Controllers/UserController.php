@@ -12,10 +12,25 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $queryBuilder = new QueryBuilder(new User, $request);
-        return response()->json([
-            'status' => 200,
-            'users' => $queryBuilder->build()->get()
-        ],200);
+        
+        // Single User
+        if($request->limit && $request->limit == 1)
+        {
+            $user = json_decode("{}");
+            if(isset($queryBuilder->build()->get()[0]))
+                $user = $queryBuilder->build()->get()[0];
+            return response()->json([
+                'status' => 200,
+                'user' => $user
+            ],200);
+        }
+        else
+        {
+            return response()->json([
+                'status' => 200,
+                'users' => $queryBuilder->build()->get()
+            ],200);
+        }
     }
 
     public function show(User $user)
