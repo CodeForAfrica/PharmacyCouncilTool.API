@@ -13,6 +13,7 @@ class PharmacyController extends Controller
     {
         $queryBuilder = new QueryBuilder(new Pharmacy, $request);
         return response()->json([
+            'status' => 200,
             'pharmacies' => $queryBuilder->build()->get()
         ],200);
     }
@@ -20,6 +21,7 @@ class PharmacyController extends Controller
     public function show(Pharmacy $pharmacy)
     {
         return response()->json([
+            'status' => 200,
             'pharmacy' => $pharmacy
         ], 200);
     }
@@ -29,6 +31,7 @@ class PharmacyController extends Controller
         $pharmacy = Pharmacy::create($request->all());
 
         return response()->json([
+            'status' => 201,
             'pharmacy' => $pharmacy
         ], 201);
     }
@@ -38,6 +41,7 @@ class PharmacyController extends Controller
         $pharmacy->update($request->all());
 
         return response()->json([
+            'status' => 200,
             'pharmacy' => $pharmacy
         ], 200);
     }

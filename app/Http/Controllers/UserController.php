@@ -13,6 +13,7 @@ class UserController extends Controller
     {
         $queryBuilder = new QueryBuilder(new User, $request);
         return response()->json([
+            'status' => 200,
             'users' => $queryBuilder->build()->get()
         ],200);
     }
@@ -20,6 +21,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         return response()->json([
+            'status' => 200,
             'user' => $user
         ], 200);
     }
@@ -29,6 +31,7 @@ class UserController extends Controller
         $user = User::create($request->all());
 
         return response()->json([
+            'status' => 200,
             'user' => $user
         ], 201);
     }
@@ -38,6 +41,7 @@ class UserController extends Controller
         $user->update($request->all());
 
         return response()->json([
+            'status' => 200,
             'user' => $user
         ], 200);
     }

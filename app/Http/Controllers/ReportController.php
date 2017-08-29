@@ -13,6 +13,7 @@ class ReportController extends Controller
     {
         $queryBuilder = new QueryBuilder(new Report, $request);
         return response()->json([
+            'status' => 200,
             'reports' => $queryBuilder->build()->get()
         ],200);
     }
@@ -20,6 +21,7 @@ class ReportController extends Controller
     public function show(Report $report)
     {
         return response()->json([
+            'status' => 200,
             'report' => $report
         ], 200);
     }
@@ -29,6 +31,7 @@ class ReportController extends Controller
         $report = Report::create($request->all());
 
         return response()->json([
+            'status' => 201,
             'report' => $report
         ], 201);
     }
@@ -38,6 +41,7 @@ class ReportController extends Controller
         $report->update($request->all());
 
         return response()->json([
+            'status' => 200,
             'report' => $report
         ], 200);
     }
