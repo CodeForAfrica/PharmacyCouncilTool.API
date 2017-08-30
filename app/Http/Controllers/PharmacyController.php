@@ -17,10 +17,20 @@ class PharmacyController extends Controller
         if($request->limit && $request->limit == 1)
         {
             $pharmacy = json_decode("{}");
+            $status = 0;
+
             if(isset($queryBuilder->build()->get()[0]))
+            {
                 $pharmacy = $queryBuilder->build()->get()[0];
+                $status = 200;
+            }
+            else
+            {
+                $status = 404;
+            }
+
             return response()->json([
-                'status' => 200,
+                'status' => $status,
                 'pharmacy' => $pharmacy
             ],200);
         }
@@ -35,8 +45,12 @@ class PharmacyController extends Controller
 
     public function show(Pharmacy $pharmacy)
     {
+        $status = "";
+        if($pharmacy) $status = 200;
+        else $status = 404;
+
         return response()->json([
-            'status' => 200,
+            'status' => $status,
             'pharmacy' => $pharmacy
         ], 200);
     }
