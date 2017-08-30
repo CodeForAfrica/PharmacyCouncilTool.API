@@ -36,9 +36,15 @@ class PharmacyController extends Controller
         }
         else
         {
+            $pharmacies = $queryBuilder->build()->get();
+            $status = 0;
+            
+            if($pharmacies && count($pharmacies) > 0) $status = 200;
+            else $status = 404;
+
             return response()->json([
-                'status' => 200,
-                'pharmacies' => $queryBuilder->build()->get()
+                'status' => $status,
+                'pharmacies' => $pharmacies
             ],200);
         }
     }

@@ -36,9 +36,15 @@ class UserController extends Controller
         }
         else
         {
+            $users = $queryBuilder->build()->get();
+            $status = 0;
+            
+            if($users && count($users) > 0) $status = 200;
+            else $status = 404;
+
             return response()->json([
-                'status' => 200,
-                'users' => $queryBuilder->build()->get()
+                'status' => $status,
+                'users' => $users
             ],200);
         }
     }

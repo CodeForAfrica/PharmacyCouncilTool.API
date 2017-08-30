@@ -36,9 +36,15 @@ class ReportController extends Controller
         }
         else
         {
+            $reports = $queryBuilder->build()->get();
+            $status = 0;
+            
+            if($reports && count($reports) > 0) $status = 200;
+            else $status = 404;
+
             return response()->json([
-                'status' => 200,
-                'reports' => $queryBuilder->build()->get()
+                'status' => $status,
+                'reports' => $reports
             ],200);
         }
     }
