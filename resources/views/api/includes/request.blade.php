@@ -3,7 +3,7 @@
     <h2 class="section-title">Requests</h2>
     <div class="section-block">
         <p>
-        	The base URL of the API is http://htools-tz-pharmacy-reporting-tool-api.dokku-1.codefortanzania.org/api to access and send your requests.
+        	The base URL of the API is <code>http://htools-tz-pharmacy-reporting-tool-api.dokku-1.codefortanzania.org/api/</code> to access and send your requests.
         </p>
 
         <h3>JSON Bodies</h3>
