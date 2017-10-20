@@ -30,6 +30,13 @@ Route::group(['middleware' => ['auth:api','cors']], function(){
     Route::get('reports/{report}', 'ReportController@show');
     Route::put('reports/{report}', 'ReportController@update');
     Route::delete('reports/{report}', 'ReportController@delete');
+
+    // Dispensers API route.
+    Route::post('dispensers', 'DispenserController@store');
+    Route::get('dispensers', 'DispenserController@index');
+    Route::get('dispensers/{dispenser}', 'DispenserController@show');
+    Route::put('dispensers/{dispenser}', 'DispenserController@update');
+    Route::delete('dispensers/{dispenser}', 'DispenserController@delete');
 });
 
 Route::group(['middleware' => 'cors'], function(){
