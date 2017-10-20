@@ -37,6 +37,12 @@ Route::group(['middleware' => ['auth:api','cors']], function(){
     Route::get('dispensers/{dispenser}', 'DispenserController@show');
     Route::put('dispensers/{dispenser}', 'DispenserController@update');
     Route::delete('dispensers/{dispenser}', 'DispenserController@delete');
+    // Users API route.
+    Route::get('users', 'UserController@index');
+    Route::get('users/{user}', 'UserController@show');
+    Route::post('users', 'UserController@store');
+    Route::put('users/{user}', 'UserController@update');
+    Route::delete('users/{user}', 'UserController@delete');
 });
 
 Route::group(['middleware' => 'cors'], function(){
@@ -46,4 +52,8 @@ Route::group(['middleware' => 'cors'], function(){
 
     // Reports API routes without Token.
     Route::post('reports', 'ReportController@store');
+
+    // User Login API Routes without Token.
+    Route::get('user/login', 'Auth\APILoginController@index');
+    Route::get('user/auth', 'Auth\APILoginController@getAuthenticatedUser');
 });

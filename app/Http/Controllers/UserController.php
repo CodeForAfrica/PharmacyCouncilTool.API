@@ -3,25 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Pharmacy;
+use App\User;
 
 use Unlu\Laravel\Api\QueryBuilder;
 
-class PharmacyController extends Controller
+class UserController extends Controller
 {
     public function index(Request $request)
     {
-        $queryBuilder = new QueryBuilder(new Pharmacy, $request);
+        $queryBuilder = new QueryBuilder(new User, $request);
         
-        // Single Pharmacy
+        // Single User
         if($request->limit && $request->limit == 1)
         {
-            $pharmacy = json_decode("{}");
+            $user = json_decode("{}");
             $status = 0;
 
             if(isset($queryBuilder->build()->get()[0]))
             {
-                $pharmacy = $queryBuilder->build()->get()[0];
+                $user = $queryBuilder->build()->get()[0];
                 $status = 200;
             }
             else
@@ -31,59 +31,55 @@ class PharmacyController extends Controller
 
             return response()->json([
                 'status' => $status,
-                'pharmacy' => $pharmacy
+                'user' => $user
             ],200);
         }
         else
         {
-            $pharmacies = $queryBuilder->build()->get();
+            $users = $queryBuilder->build()->get();
             $status = 0;
             
-            if($pharmacies && count($pharmacies) > 0) $status = 200;
+            if($users && count($users) > 0) $status = 200;
             else $status = 404;
 
             return response()->json([
                 'status' => $status,
-                'pharmacies' => $pharmacies
+                'users' => $users
             ],200);
         }
     }
 
-    public function show(Pharmacy $pharmacy)
+    public function show(User $user)
     {
-        $status = "";
-        if($pharmacy) $status = 200;
-        else $status = 404;
-
         return response()->json([
-            'status' => $status,
-            'pharmacy' => $pharmacy
+            'status' => 200,
+            'user' => $user
         ], 200);
     }
 
     public function store(Request $request)
     {
-        $pharmacy = Pharmacy::create($request->all());
-
-        return response()->json([
-            'status' => 201,
-            'pharmacy' => $pharmacy
-        ], 201);
-    }
-
-    public function update(Request $request, Pharmacy $pharmacy)
-    {
-        $pharmacy->update($request->all());
+        $user = User::create($request->all());
 
         return response()->json([
             'status' => 200,
-            'pharmacy' => $pharmacy
+            'user' => $user
+        ], 201);
+    }
+
+    public function update(Request $request, User $user)
+    {
+        $user->update($request->all());
+
+        return response()->json([
+            'status' => 200,
+            'user' => $user
         ], 200);
     }
 
-    public function delete(Pharmacy $pharmacy)
+    public function delete(User $user)
     {
-        $pharmacy->delete();
+        $user->delete();
 
         return response()->json(null, 204);
     }
