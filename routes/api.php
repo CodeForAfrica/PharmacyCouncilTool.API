@@ -37,6 +37,21 @@ Route::group(['middleware' => ['auth:api','cors']], function(){
     Route::get('dispensers/{dispenser}', 'DispenserController@show');
     Route::put('dispensers/{dispenser}', 'DispenserController@update');
     Route::delete('dispensers/{dispenser}', 'DispenserController@delete');
+
+    // Premises API route.
+    Route::post('premises', 'PremiseController@store');
+    Route::get('premises', 'PremiseController@index');
+    Route::get('premises/{premise}', 'PremiseController@show');
+    Route::put('premises/{premise}', 'PremiseController@update');
+    Route::delete('premises/{premise}', 'PremiseController@delete');
+
+    // Addos API route.
+    Route::post('addos', 'AddoController@store');
+    Route::get('addos', 'AddoController@index');
+    Route::get('addos/{addo}', 'AddoController@show');
+    Route::put('addos/{addo}', 'AddoController@update');
+    Route::delete('addos/{addo}', 'AddoController@delete');
+
     // Users API route.
     Route::get('users', 'UserController@index');
     Route::get('users/{user}', 'UserController@show');

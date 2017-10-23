@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pharmacy;
+use App\Addo;
+use App\Premise;
 
 use Unlu\Laravel\Api\QueryBuilder;
 
@@ -11,6 +13,7 @@ class PharmacyController extends Controller
 {
     public function index(Request $request)
     {
+        /* -- OLD CODES -->
         $queryBuilder = new QueryBuilder(new Pharmacy, $request);
         
         // Single Pharmacy
@@ -47,6 +50,72 @@ class PharmacyController extends Controller
                 'pharmacies' => $pharmacies
             ],200);
         }
+        */
+        $status = 0;
+        $message = "";
+        $pharmacy = null;
+
+
+        if($request->registration_number)
+        {
+            $registration_number = $request->registration_number;
+
+            // Searching for Addo
+            $addo = Addo::where('accreditation_no', $registration_number)->first();
+
+            if($addo)
+            {
+                $status = 200;
+                $message = "success";
+                $pharmacy = array(
+                    'type' => "Addo",
+                    'name' => $addo->name,
+                    'street' => $addo->street,
+                    'ward' => $addo->ward,
+                    'district' => $addo->district,
+                    'region' => $addo->region,
+                    'pharmacist' => "",
+                    'owner_name' => ucfirst(strtolower($addo->owner_firstname)) ." ". ucfirst(strtolower($addo->owner_middlename)) ." ". ucfirst(strtolower($addo->owner_surname))
+                );
+            }
+            else{
+                // No Addo found
+                // Searching for Premise
+                $premise = Premise::where('fin', $registration_number)->first();
+
+                if($premise)
+                {
+                    $status = 200;
+                    $message = "success";
+                    $pharmacy = array(
+                        'type' => "Premise",
+                        'name' => $premise->name,
+                        'street' => $premise->village,
+                        'ward' => $premise->ward,
+                        'district' => $premise->district,
+                        'region' => $premise->region,
+                        'pharmacist' => $premise->pharmacist,
+                        'owner_name' => $premise->owner_name
+                    );
+                }
+                else
+                {
+                    // No premise found
+                }
+            }
+        }
+        else
+        {
+            $status = 404;
+            $message = "Pitisha namba ya usajili wa Duka la Dawa.";
+            $pharmacy = null;
+        }
+
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+            'pharmacy' => $pharmacy
+        ],200);
     }
 
     public function show(Pharmacy $pharmacy)

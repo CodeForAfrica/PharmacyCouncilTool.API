@@ -3,25 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Dispenser;
+use App\Addo;
 
 use Unlu\Laravel\Api\QueryBuilder;
 
-class DispenserController extends Controller
+class AddoController extends Controller
 {
     public function index(Request $request)
     {
-        $queryBuilder = new QueryBuilder(new Dispenser, $request);
+        $queryBuilder = new QueryBuilder(new Addo, $request);
         
-        // Single Dispenser
+        // Single Addo
         if($request->limit && $request->limit == 1)
         {
-            $dispenser = json_decode("{}");
+            $addo = json_decode("{}");
             $status = 0;
 
             if(isset($queryBuilder->build()->get()[0]))
             {
-                $dispenser = $queryBuilder->build()->get()[0];
+                $addo = $queryBuilder->build()->get()[0];
                 $status = 200;
             }
             else
@@ -31,59 +31,59 @@ class DispenserController extends Controller
 
             return response()->json([
                 'status' => $status,
-                'dispenser' => $dispenser
+                'addo' => $addo
             ],200);
         }
         else
         {
-            $dispensers = $queryBuilder->build()->get();
+            $addos = $queryBuilder->build()->get();
             $status = 0;
             
-            if($dispensers && count($dispensers) > 0) $status = 200;
+            if($addos && count($addos) > 0) $status = 200;
             else $status = 404;
 
             return response()->json([
                 'status' => $status,
-                'dispensers' => $dispensers
+                'addos' => $addos
             ],200);
         }
     }
 
-    public function show(Dispenser $dispenser)
+    public function show(Addo $addo)
     {
         $status = "";
-        if($dispenser) $status = 200;
+        if($addo) $status = 200;
         else $status = 404;
 
         return response()->json([
             'status' => $status,
-            'dispenser' => $dispenser
+            'addo' => $addo
         ], 200);
     }
 
     public function store(Request $request)
     {
-        $dispenser = Dispenser::create($request->all());
+        $addo = Addo::create($request->all());
 
         return response()->json([
             'status' => 201,
-            'dispenser' => $dispenser
+            'addo' => $addo
         ], 201);
     }
 
-    public function update(Request $request, Dispenser $dispenser)
+    public function update(Request $request, Addo $addo)
     {
-        $dispenser->update($request->all());
+        $addo->update($request->all());
 
         return response()->json([
             'status' => 200,
-            'dispenser' => $dispenser
+            'addo' => $addo
         ], 200);
     }
 
-    public function delete(Dispenser $dispenser)
+    public function delete(Addo $addo)
     {
-        $dispenser->delete();
+        $addo->delete();
 
         return response()->json(null, 204);
     }

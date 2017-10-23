@@ -3,25 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Dispenser;
+use App\Premise;
 
 use Unlu\Laravel\Api\QueryBuilder;
 
-class DispenserController extends Controller
+class PremiseController extends Controller
 {
     public function index(Request $request)
     {
-        $queryBuilder = new QueryBuilder(new Dispenser, $request);
+        $queryBuilder = new QueryBuilder(new Premise, $request);
         
-        // Single Dispenser
+        // Single Premise
         if($request->limit && $request->limit == 1)
         {
-            $dispenser = json_decode("{}");
+            $premise = json_decode("{}");
             $status = 0;
 
             if(isset($queryBuilder->build()->get()[0]))
             {
-                $dispenser = $queryBuilder->build()->get()[0];
+                $premise = $queryBuilder->build()->get()[0];
                 $status = 200;
             }
             else
@@ -31,59 +31,59 @@ class DispenserController extends Controller
 
             return response()->json([
                 'status' => $status,
-                'dispenser' => $dispenser
+                'premise' => $premise
             ],200);
         }
         else
         {
-            $dispensers = $queryBuilder->build()->get();
+            $premises = $queryBuilder->build()->get();
             $status = 0;
             
-            if($dispensers && count($dispensers) > 0) $status = 200;
+            if($premises && count($premises) > 0) $status = 200;
             else $status = 404;
 
             return response()->json([
                 'status' => $status,
-                'dispensers' => $dispensers
+                'premises' => $premises
             ],200);
         }
     }
 
-    public function show(Dispenser $dispenser)
+    public function show(Premise $premise)
     {
         $status = "";
-        if($dispenser) $status = 200;
+        if($premise) $status = 200;
         else $status = 404;
 
         return response()->json([
             'status' => $status,
-            'dispenser' => $dispenser
+            'premise' => $premise
         ], 200);
     }
 
     public function store(Request $request)
     {
-        $dispenser = Dispenser::create($request->all());
+        $premise = Premise::create($request->all());
 
         return response()->json([
             'status' => 201,
-            'dispenser' => $dispenser
+            'premise' => $premise
         ], 201);
     }
 
-    public function update(Request $request, Dispenser $dispenser)
+    public function update(Request $request, Premise $premise)
     {
-        $dispenser->update($request->all());
+        $premise->update($request->all());
 
         return response()->json([
             'status' => 200,
-            'dispenser' => $dispenser
+            'premise' => $premise
         ], 200);
     }
 
-    public function delete(Dispenser $dispenser)
+    public function delete(Premise $premise)
     {
-        $dispenser->delete();
+        $premise->delete();
 
         return response()->json(null, 204);
     }
