@@ -52,6 +52,20 @@ Route::group(['middleware' => ['auth:api','cors']], function(){
     Route::put('addos/{addo}', 'AddoController@update');
     Route::delete('addos/{addo}', 'AddoController@delete');
 
+    // Owners API route.
+    Route::post('owners', 'OwnerController@store');
+    Route::get('owners', 'OwnerController@index');
+    Route::get('owners/{owner}', 'OwnerController@show');
+    Route::put('owners/{owner}', 'OwnerController@update');
+    Route::delete('owners/{owner}', 'OwnerController@delete');
+
+    // Pharmacists API route.
+    Route::post('pharmacists', 'PharmacistController@store');
+    Route::get('pharmacists', 'PharmacistController@index');
+    Route::get('pharmacists/{pharmacist}', 'PharmacistController@show');
+    Route::put('pharmacists/{pharmacist}', 'PharmacistController@update');
+    Route::delete('pharmacists/{pharmacist}', 'PharmacistController@delete');
+
     // Users API route.
     Route::get('users', 'UserController@index');
     Route::get('users/{user}', 'UserController@show');

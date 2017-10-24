@@ -69,13 +69,15 @@ class PharmacyController extends Controller
                 $message = "success";
                 $pharmacy = array(
                     'type' => "Addo",
+                    'registration_number' => $addo->accreditation_no,
                     'name' => $addo->name,
+                    'location' => $addo->street . " " . $addo->ward,
                     'street' => $addo->street,
                     'ward' => $addo->ward,
                     'district' => $addo->district,
                     'region' => $addo->region,
                     'pharmacist' => "",
-                    'owner_name' => ucfirst(strtolower($addo->owner_firstname)) ." ". ucfirst(strtolower($addo->owner_middlename)) ." ". ucfirst(strtolower($addo->owner_surname))
+                    'owner' => ucfirst(strtolower($addo->owner->firstname)) ." ". ucfirst(strtolower($addo->owner->middlename)) ." ". ucfirst(strtolower($addo->owner->surname))
                 );
             }
             else{
@@ -89,13 +91,15 @@ class PharmacyController extends Controller
                     $message = "success";
                     $pharmacy = array(
                         'type' => "Premise",
+                        'registration_number' => $premise->fin,
                         'name' => $premise->name,
+                        'location' => $premise->physical,
                         'street' => $premise->village,
                         'ward' => $premise->ward,
                         'district' => $premise->district,
                         'region' => $premise->region,
-                        'pharmacist' => $premise->pharmacist,
-                        'owner_name' => $premise->owner_name
+                        'pharmacist' => ucfirst(strtolower($premise->pharmacist->firstname)) ." ". ucfirst(strtolower($premise->pharmacist->middlename)) ." ". ucfirst(strtolower($premise->pharmacist->surname)),
+                        'owner' => ucfirst(strtolower($premise->owner->firstname)) ." ". ucfirst(strtolower($premise->owner->middlename)) ." ". ucfirst(strtolower($premise->owner->surname))
                     );
                 }
                 else

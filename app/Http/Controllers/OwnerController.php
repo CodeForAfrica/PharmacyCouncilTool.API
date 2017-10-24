@@ -3,26 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Addo;
+use App\Owner;
 
 use Unlu\Laravel\Api\QueryBuilder;
 
-class AddoController extends Controller
+class OwnerController extends Controller
 {
     public function index(Request $request)
     {
-        $queryBuilder = new QueryBuilder(new Addo, $request);
+        $queryBuilder = new QueryBuilder(new Owner, $request);
         
-        // Single Addo
+        // Single Owner
         if($request->limit && $request->limit == 1)
         {
-            $addo = json_decode("{}");
+            $owner = json_decode("{}");
             $status = 0;
 
             if(isset($queryBuilder->build()->get()[0]))
             {
-                $addo = $queryBuilder->build()->get()[0];
-                $addo->owner = $addo->owner;
+                $owner = $queryBuilder->build()->get()[0];
                 $status = 200;
             }
             else
@@ -32,66 +31,59 @@ class AddoController extends Controller
 
             return response()->json([
                 'status' => $status,
-                'addo' => $addo
+                'owner' => $owner
             ],200);
         }
         else
         {
-            $addos = $queryBuilder->build()->get();
+            $owners = $queryBuilder->build()->get();
             $status = 0;
             
-            if($addos && count($addos) > 0)
-            {
-                $status = 200;
-
-                for($x=0; $x < count($addos); $x++){
-                    $addos[$x]->owner = $addos[$x]->owner;
-                }
-            }
+            if($owners && count($owners) > 0) $status = 200;
             else $status = 404;
 
             return response()->json([
                 'status' => $status,
-                'addos' => $addos
+                'owners' => $owners
             ],200);
         }
     }
 
-    public function show(Addo $addo)
+    public function show(Owner $owner)
     {
         $status = "";
-        if($addo) $status = 200;
+        if($owner) $status = 200;
         else $status = 404;
 
         return response()->json([
             'status' => $status,
-            'addo' => $addo
+            'owner' => $owner
         ], 200);
     }
 
     public function store(Request $request)
     {
-        $addo = Addo::create($request->all());
+        $owner = Owner::create($request->all());
 
         return response()->json([
             'status' => 201,
-            'addo' => $addo
+            'owner' => $owner
         ], 201);
     }
 
-    public function update(Request $request, Addo $addo)
+    public function update(Request $request, Owner $owner)
     {
-        $addo->update($request->all());
+        $owner->update($request->all());
 
         return response()->json([
             'status' => 200,
-            'addo' => $addo
+            'owner' => $owner
         ], 200);
     }
 
-    public function delete(Addo $addo)
+    public function delete(Owner $owner)
     {
-        $addo->delete();
+        $owner->delete();
 
         return response()->json(null, 204);
     }

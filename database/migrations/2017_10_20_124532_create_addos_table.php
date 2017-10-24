@@ -21,10 +21,7 @@ class CreateAddosTable extends Migration
             $table->string('district')->nullable();
             $table->string('ward')->nullable();
             $table->string('street')->nullable();
-            $table->string('owner_firstname')->nullable();
-            $table->string('owner_middlename')->nullable();
-            $table->string('owner_surname')->nullable();
-            $table->string('owner_phone')->nullable();
+            $table->integer('owner_id')->nullable();
             $table->timestamps();
         });
     }

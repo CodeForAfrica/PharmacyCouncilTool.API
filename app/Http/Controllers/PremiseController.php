@@ -23,6 +23,8 @@ class PremiseController extends Controller
             {
                 $premise = $queryBuilder->build()->get()[0];
                 $status = 200;
+                $premise->owner = $premise->owner;
+                $premise->pharmacist = $premise->pharmacist;
             }
             else
             {
@@ -39,7 +41,15 @@ class PremiseController extends Controller
             $premises = $queryBuilder->build()->get();
             $status = 0;
             
-            if($premises && count($premises) > 0) $status = 200;
+            if($premises && count($premises) > 0)
+            {
+                $status = 200;
+
+                for($x=0; $x < count($premises); $x++){
+                    $premises[$x]->owner = $premises[$x]->owner;
+                    $premises[$x]->pharmacist = $premises[$x]->pharmacist;
+                }
+            }
             else $status = 404;
 
             return response()->json([

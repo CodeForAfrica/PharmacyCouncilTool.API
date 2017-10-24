@@ -3,26 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Addo;
+use App\Pharmacist;
 
 use Unlu\Laravel\Api\QueryBuilder;
 
-class AddoController extends Controller
+class PharmacistController extends Controller
 {
     public function index(Request $request)
     {
-        $queryBuilder = new QueryBuilder(new Addo, $request);
+        $queryBuilder = new QueryBuilder(new Pharmacist, $request);
         
-        // Single Addo
+        // Single Pharmacist
         if($request->limit && $request->limit == 1)
         {
-            $addo = json_decode("{}");
+            $pharmacist = json_decode("{}");
             $status = 0;
 
             if(isset($queryBuilder->build()->get()[0]))
             {
-                $addo = $queryBuilder->build()->get()[0];
-                $addo->owner = $addo->owner;
+                $pharmacist = $queryBuilder->build()->get()[0];
                 $status = 200;
             }
             else
@@ -32,66 +31,59 @@ class AddoController extends Controller
 
             return response()->json([
                 'status' => $status,
-                'addo' => $addo
+                'pharmacist' => $pharmacist
             ],200);
         }
         else
         {
-            $addos = $queryBuilder->build()->get();
+            $pharmacists = $queryBuilder->build()->get();
             $status = 0;
             
-            if($addos && count($addos) > 0)
-            {
-                $status = 200;
-
-                for($x=0; $x < count($addos); $x++){
-                    $addos[$x]->owner = $addos[$x]->owner;
-                }
-            }
+            if($pharmacists && count($pharmacists) > 0) $status = 200;
             else $status = 404;
 
             return response()->json([
                 'status' => $status,
-                'addos' => $addos
+                'pharmacists' => $pharmacists
             ],200);
         }
     }
 
-    public function show(Addo $addo)
+    public function show(Pharmacist $pharmacist)
     {
         $status = "";
-        if($addo) $status = 200;
+        if($pharmacist) $status = 200;
         else $status = 404;
 
         return response()->json([
             'status' => $status,
-            'addo' => $addo
+            'pharmacist' => $pharmacist
         ], 200);
     }
 
     public function store(Request $request)
     {
-        $addo = Addo::create($request->all());
+        $pharmacist = Pharmacist::create($request->all());
 
         return response()->json([
             'status' => 201,
-            'addo' => $addo
+            'pharmacist' => $pharmacist
         ], 201);
     }
 
-    public function update(Request $request, Addo $addo)
+    public function update(Request $request, Pharmacist $pharmacist)
     {
-        $addo->update($request->all());
+        $pharmacist->update($request->all());
 
         return response()->json([
             'status' => 200,
-            'addo' => $addo
+            'pharmacist' => $pharmacist
         ], 200);
     }
 
-    public function delete(Addo $addo)
+    public function delete(Pharmacist $pharmacist)
     {
-        $addo->delete();
+        $pharmacist->delete();
 
         return response()->json(null, 204);
     }
