@@ -38,7 +38,7 @@ class AttendanceCollectorController extends Controller
                     ]);
     
                     $status = 200;
-                    $message = "Mahudhurio ya wiki ya duka lako yamehifadhiwa.";
+                    $message = "Mahudhurio ya wiki ya duka lako la dawa yamehifadhiwa.";
                 }
                 else{
                     $status = 404;
