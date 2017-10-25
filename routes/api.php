@@ -66,6 +66,13 @@ Route::group(['middleware' => ['auth:api','cors']], function(){
     Route::put('pharmacists/{pharmacist}', 'PharmacistController@update');
     Route::delete('pharmacists/{pharmacist}', 'PharmacistController@delete');
 
+    // Attendances API route.
+    Route::post('attendances', 'AttendanceController@store');
+    Route::get('attendances', 'AttendanceController@index');
+    Route::get('attendances/{attendance}', 'AttendanceController@show');
+    Route::put('attendances/{attendance}', 'AttendanceController@update');
+    Route::delete('attendances/{attendance}', 'AttendanceController@delete');
+
     // Users API route.
     Route::get('users', 'UserController@index');
     Route::get('users/{user}', 'UserController@show');
@@ -81,6 +88,9 @@ Route::group(['middleware' => 'cors'], function(){
 
     // Reports API routes without Token.
     Route::post('reports', 'ReportController@store');
+
+    // AttendanceCollector API route.
+    Route::get('attendancecollector', 'AttendanceCollectorController@index');
 
     // User Login API Routes without Token.
     Route::get('user/login', 'Auth\APILoginController@index');
