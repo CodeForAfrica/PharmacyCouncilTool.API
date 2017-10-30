@@ -60,7 +60,11 @@ class AddoController extends Controller
     public function show(Addo $addo)
     {
         $status = "";
-        if($addo) $status = 200;
+        if($addo)
+        {
+            $addo->owner = $addo->owner;
+            $status = 200;
+        }
         else $status = 404;
 
         return response()->json([

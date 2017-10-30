@@ -62,7 +62,12 @@ class PremiseController extends Controller
     public function show(Premise $premise)
     {
         $status = "";
-        if($premise) $status = 200;
+        if($premise)
+        {
+            $status = 200;
+            $premise->owner = $premise->owner;
+            $premise->pharmacist = $premise->pharmacist;
+        }
         else $status = 404;
 
         return response()->json([
