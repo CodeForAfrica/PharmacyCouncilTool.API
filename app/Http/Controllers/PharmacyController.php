@@ -73,9 +73,10 @@ class PharmacyController extends Controller
                     'name' => $addo->name,
                     'location' => $addo->street . " " . $addo->ward,
                     'street' => $addo->street,
-                    'ward' => $addo->ward,
-                    'district' => $addo->district,
-                    'region' => $addo->region,
+                    'ward' => $addo->ward->name,
+                    'district' => $addo->district->name,
+                    'region' => $addo->region->name,
+                    'registration_date' => '',
                     'pharmacist' => "",
                     'owner' => ucfirst(strtolower($addo->owner->firstname)) ." ". ucfirst(strtolower($addo->owner->middlename)) ." ". ucfirst(strtolower($addo->owner->surname))
                 );
@@ -95,9 +96,10 @@ class PharmacyController extends Controller
                         'name' => $premise->name,
                         'location' => $premise->physical,
                         'street' => $premise->village,
-                        'ward' => $premise->ward,
-                        'district' => $premise->district,
-                        'region' => $premise->region,
+                        'ward' => $premise->ward->name,
+                        'district' => $premise->district->name,
+                        'region' => $premise->region->name,
+                        'registration_date' => $premise->registration_date,
                         'pharmacist' => ucfirst(strtolower($premise->pharmacist->firstname)) ." ". ucfirst(strtolower($premise->pharmacist->middlename)) ." ". ucfirst(strtolower($premise->pharmacist->surname)),
                         'owner' => ucfirst(strtolower($premise->owner->firstname)) ." ". ucfirst(strtolower($premise->owner->middlename)) ." ". ucfirst(strtolower($premise->owner->surname))
                     );
