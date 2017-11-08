@@ -59,12 +59,12 @@ Route::group(['middleware' => ['auth:api','cors']], function(){
     Route::put('owners/{owner}', 'OwnerController@update');
     Route::delete('owners/{owner}', 'OwnerController@delete');
 
-    // Pharmacists API route.
-    Route::post('pharmacists', 'PharmacistController@store');
-    Route::get('pharmacists', 'PharmacistController@index');
-    Route::get('pharmacists/{pharmacist}', 'PharmacistController@show');
-    Route::put('pharmacists/{pharmacist}', 'PharmacistController@update');
-    Route::delete('pharmacists/{pharmacist}', 'PharmacistController@delete');
+    // Personnels API route.
+    Route::post('personnels', 'PersonnelController@store');
+    Route::get('personnels', 'PersonnelController@index');
+    Route::get('personnels/{personnel}', 'PersonnelController@show');
+    Route::put('personnels/{personnel}', 'PersonnelController@update');
+    Route::delete('personnels/{personnel}', 'PersonnelController@delete');
 
     // Attendances API route.
     Route::post('attendances', 'AttendanceController@store');
@@ -79,6 +79,27 @@ Route::group(['middleware' => ['auth:api','cors']], function(){
     Route::post('users', 'UserController@store');
     Route::put('users/{user}', 'UserController@update');
     Route::delete('users/{user}', 'UserController@delete');
+
+    // Regions API route.
+    Route::get('regions', 'RegionController@index');
+    Route::get('regions/{region}', 'RegionController@show');
+    Route::post('regions', 'RegionController@store');
+    Route::put('regions/{region}', 'RegionController@update');
+    Route::delete('regions/{region}', 'RegionController@delete');
+
+    // Districts API route.
+    Route::get('districts', 'DistrictController@index');
+    Route::get('districts/{district}', 'DistrictController@show');
+    Route::post('districts', 'DistrictController@store');
+    Route::put('districts/{district}', 'DistrictController@update');
+    Route::delete('districts/{district}', 'DistrictController@delete');
+
+    // Wards API route.
+    Route::get('wards', 'WardController@index');
+    Route::get('wards/{ward}', 'WardController@show');
+    Route::post('wards', 'WardController@store');
+    Route::put('wards/{ward}', 'WardController@update');
+    Route::delete('wards/{ward}', 'WardController@delete');
 });
 
 Route::group(['middleware' => 'cors'], function(){

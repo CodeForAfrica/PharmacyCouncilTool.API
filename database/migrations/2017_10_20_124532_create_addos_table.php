@@ -16,12 +16,12 @@ class CreateAddosTable extends Migration
         Schema::create('addos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->nullable();
-            $table->string('accreditation_no')->nullable();
-            $table->string('region')->nullable();
-            $table->string('district')->nullable();
-            $table->string('ward')->nullable();
+            $table->string('accreditation_no');
+            $table->string('region_id');
+            $table->string('district_id');
+            $table->string('ward_id');
             $table->string('street')->nullable();
-            $table->integer('owner_id')->nullable();
+            $table->integer('owner_id');
             $table->timestamps();
         });
     }

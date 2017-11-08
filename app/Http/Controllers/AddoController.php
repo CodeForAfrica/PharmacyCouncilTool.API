@@ -22,6 +22,9 @@ class AddoController extends Controller
             if(isset($queryBuilder->build()->get()[0]))
             {
                 $addo = $queryBuilder->build()->get()[0];
+                $addo->region = $addo->region;
+                $addo->district = $addo->district;
+                $addo->ward = $addo->ward;
                 $addo->owner = $addo->owner;
                 $status = 200;
             }
@@ -45,6 +48,9 @@ class AddoController extends Controller
                 $status = 200;
 
                 for($x=0; $x < count($addos); $x++){
+                    $addos[$x]->region = $addos[$x]->region;
+                    $addos[$x]->district = $addos[$x]->district;
+                    $addos[$x]->ward = $addos[$x]->ward;
                     $addos[$x]->owner = $addos[$x]->owner;
                 }
             }
@@ -62,6 +68,9 @@ class AddoController extends Controller
         $status = "";
         if($addo)
         {
+            $addo->region = $addo->region;
+            $addo->district = $addo->district;
+            $addo->ward = $addo->ward;
             $addo->owner = $addo->owner;
             $status = 200;
         }

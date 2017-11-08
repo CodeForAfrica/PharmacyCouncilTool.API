@@ -3,25 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Pharmacist;
+use App\District;
 
 use Unlu\Laravel\Api\QueryBuilder;
 
-class PharmacistController extends Controller
+class DistrictController extends Controller
 {
     public function index(Request $request)
     {
-        $queryBuilder = new QueryBuilder(new Pharmacist, $request);
+        $queryBuilder = new QueryBuilder(new District, $request);
         
-        // Single Pharmacist
+        // Single District
         if($request->limit && $request->limit == 1)
         {
-            $pharmacist = json_decode("{}");
+            $district = json_decode("{}");
             $status = 0;
 
             if(isset($queryBuilder->build()->get()[0]))
             {
-                $pharmacist = $queryBuilder->build()->get()[0];
+                $district = $queryBuilder->build()->get()[0];
                 $status = 200;
             }
             else
@@ -31,59 +31,59 @@ class PharmacistController extends Controller
 
             return response()->json([
                 'status' => $status,
-                'pharmacist' => $pharmacist
+                'district' => $district
             ],200);
         }
         else
         {
-            $pharmacists = $queryBuilder->build()->get();
+            $districts = $queryBuilder->build()->get();
             $status = 0;
             
-            if($pharmacists && count($pharmacists) > 0) $status = 200;
+            if($districts && count($districts) > 0) $status = 200;
             else $status = 404;
 
             return response()->json([
                 'status' => $status,
-                'pharmacists' => $pharmacists
+                'districts' => $districts
             ],200);
         }
     }
 
-    public function show(Pharmacist $pharmacist)
+    public function show(District $district)
     {
         $status = "";
-        if($pharmacist) $status = 200;
+        if($district) $status = 200;
         else $status = 404;
 
         return response()->json([
             'status' => $status,
-            'pharmacist' => $pharmacist
+            'district' => $district
         ], 200);
     }
 
     public function store(Request $request)
     {
-        $pharmacist = Pharmacist::create($request->all());
+        $district = District::create($request->all());
 
         return response()->json([
             'status' => 201,
-            'pharmacist' => $pharmacist
+            'district' => $district
         ], 201);
     }
 
-    public function update(Request $request, Pharmacist $pharmacist)
+    public function update(Request $request, District $district)
     {
-        $pharmacist->update($request->all());
+        $district->update($request->all());
 
         return response()->json([
             'status' => 200,
-            'pharmacist' => $pharmacist
+            'district' => $district
         ], 200);
     }
 
-    public function delete(Pharmacist $pharmacist)
+    public function delete(District $district)
     {
-        $pharmacist->delete();
+        $district->delete();
 
         return response()->json(null, 204);
     }

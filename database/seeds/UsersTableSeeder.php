@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
 
         // Creating a demo user in our database.
         User::create([
-            'name' => "Administrator",
+            'name' => "Admin",
             'email' => "admin@codefortanzania.org",
             'password' => bcrypt('123456'),
             'api_token' => $api_token

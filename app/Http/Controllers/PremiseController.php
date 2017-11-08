@@ -23,6 +23,9 @@ class PremiseController extends Controller
             {
                 $premise = $queryBuilder->build()->get()[0];
                 $status = 200;
+                $premise->region = $premise->region;
+                $premise->district = $premise->district;
+                $premise->ward = $premise->ward;
                 $premise->owner = $premise->owner;
                 $premise->pharmacist = $premise->pharmacist;
             }
@@ -46,6 +49,9 @@ class PremiseController extends Controller
                 $status = 200;
 
                 for($x=0; $x < count($premises); $x++){
+                    $premises[$x]->region = $premises[$x]->region;
+                    $premises[$x]->district = $premises[$x]->district;
+                    $premises[$x]->ward = $premises[$x]->ward;
                     $premises[$x]->owner = $premises[$x]->owner;
                     $premises[$x]->pharmacist = $premises[$x]->pharmacist;
                 }
@@ -65,6 +71,9 @@ class PremiseController extends Controller
         if($premise)
         {
             $status = 200;
+            $premise->region = $premise->region;
+            $premise->district = $premise->district;
+            $premise->ward = $premise->ward;
             $premise->owner = $premise->owner;
             $premise->pharmacist = $premise->pharmacist;
         }
