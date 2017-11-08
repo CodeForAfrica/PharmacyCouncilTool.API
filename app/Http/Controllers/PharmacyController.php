@@ -105,6 +105,7 @@ class PharmacyController extends Controller
                 else
                 {
                     // No premise found
+                    $status = 404;
                 }
             }
         }
