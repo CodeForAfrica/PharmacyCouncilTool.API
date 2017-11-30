@@ -71,13 +71,13 @@ class PharmacyController extends Controller
                     'type' => "Addo",
                     'registration_number' => $addo->accreditation_no,
                     'name' => $addo->name,
-                    'location' => $addo->street . " " . $addo->ward,
+                    'location' => $addo->street . " " . $addo->ward->name,
                     'street' => $addo->street,
                     'ward' => $addo->ward->name,
                     'district' => $addo->district->name,
                     'region' => $addo->region->name,
-                    'registration_date' => '',
-                    'pharmacist' => "",
+                    'registration_date' => "NIL",
+                    'pharmacist' => "NIL",
                     'owner' => ucfirst(strtolower($addo->owner->firstname)) ." ". ucfirst(strtolower($addo->owner->middlename)) ." ". ucfirst(strtolower($addo->owner->surname))
                 );
             }
