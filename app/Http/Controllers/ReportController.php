@@ -84,3 +84,4 @@ class ReportController extends Controller
         return response()->json(null, 204);
     }
 }
+
