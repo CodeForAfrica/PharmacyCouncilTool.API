@@ -4,36 +4,89 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Premise;
+use App\Owner;
 
 use Unlu\Laravel\Api\QueryBuilder;
 
 class PremiseController extends Controller
 {
+    public $unknown_region = array(
+        'name' => "UNKNOWN",
+        'capital' => "UNKNOWN",
+        'districts' => 0,
+        'keycode' => "UNKNOWN",
+        'area' => "UNKNOWN",
+        'population' => "UNKNOWN",
+        'postcode' => "UNKNOWN",
+        'zone' => "UNKNOWN"
+    );
+
+    public $unknown_district = array(
+        'region_id' => 9999,
+        'name' => "UNKNOWN",
+        'keycode' => "UNKNOWN",
+        'capital' => "UNKNOWN",
+        'area' => "UNKNOWN",
+        'population' => "UNKNOWN"
+    );
+
+    public $unknown_ward = array(
+        'district_id' => 9999,
+        'name' => "UNKNOWN",
+        'keycode' => "UNKNOWN"
+    );
+
     public function index(Request $request)
     {
         $queryBuilder = new QueryBuilder(new Premise, $request);
-        
+
         // Single Premise
         if($request->limit && $request->limit == 1)
         {
             $premise = json_decode("{}");
+            $owners = array();
             $status = 0;
 
             if(isset($queryBuilder->build()->get()[0]))
             {
                 $premise = $queryBuilder->build()->get()[0];
                 $status = 200;
-                $premise->region = $premise->region;
-                $premise->district = $premise->district;
-                $premise->ward = $premise->ward;
-                $premise->owner = $premise->owner;
+
+                // check for region
+                if($premise->region_id != 9999)
+                    $premise->region = $premise->region;
+                else $premise->region = $this->unknown_region;
+
+                // Check for district
+                if($premise->district_id != 9999)
+                    $premise->district = $premise->district;
+                else $premise->district = $this->unknown_district;
+
+                // Check for ward
+                if($premise->ward_id !== 9999)
+                    $premise->ward = $premise->ward;
+                else $premise->ward = $this->unknown_ward;
+
+                // Getting owners
+                if($premise->owners_ids){
+                    $owners_ids = explode(":",$premise->owners_ids);
+                    if(count($owners_ids) > 0){
+                        for($x=0;$x < count($owners_ids); $x++){
+                            $owner = Owner::find($owners_ids[$x]);
+                            if(!empty($owner) && isset($owner->id)){
+                                $owners[] = $owner;
+                            }
+                        }
+                    }
+                }
+
+                $premise->owners = $owners;
                 $premise->pharmacist = $premise->pharmacist;
             }
             else
             {
                 $status = 404;
             }
-
             return response()->json([
                 'status' => $status,
                 'premise' => $premise
@@ -42,6 +95,7 @@ class PremiseController extends Controller
         else
         {
             $premises = $queryBuilder->build()->get();
+            $owners = array();
             $status = 0;
             
             if($premises && count($premises) > 0)
@@ -49,10 +103,35 @@ class PremiseController extends Controller
                 $status = 200;
 
                 for($x=0; $x < count($premises); $x++){
-                    $premises[$x]->region = $premises[$x]->region;
-                    $premises[$x]->district = $premises[$x]->district;
-                    $premises[$x]->ward = $premises[$x]->ward;
-                    $premises[$x]->owner = $premises[$x]->owner;
+                    // check for region
+                    if($premises[$x]->region_id != 9999)
+                        $premises[$x]->region = $premises[$x]->region;
+                    else $premises[$x]->region = $this->unknown_region;
+
+                    // Check for district
+                    if($premises[$x]->district_id != 9999)
+                        $premises[$x]->district = $premises[$x]->district;
+                    else $premises[$x]->district = $this->unknown_district;
+
+                    // Check for ward
+                    if($premises[$x]->ward_id !== 9999)
+                        $premises[$x]->ward = $premises[$x]->ward;
+                    else $premises[$x]->ward = $this->unknown_ward;
+
+                    // Getting owners
+                    if($premises[$x]->owners_ids){
+                        $owners_ids = explode(":",$premises[$x]->owners_ids);
+                        if(count($owners_ids) > 0){
+                            for($p=0;$p < count($owners_ids); $p++){
+                                $owner = Owner::find($owners_ids[$p]);
+                                if(!empty($owner) && isset($owner->id)){
+                                    $owners[] = $owner;
+                                }
+                            }
+                        }
+                    }
+
+                    $premises[$x]->owners = $owners;
                     $premises[$x]->pharmacist = $premises[$x]->pharmacist;
                 }
             }
@@ -68,13 +147,39 @@ class PremiseController extends Controller
     public function show(Premise $premise)
     {
         $status = "";
+        $owners = array();
+
         if($premise)
         {
             $status = 200;
-            $premise->region = $premise->region;
-            $premise->district = $premise->district;
-            $premise->ward = $premise->ward;
-            $premise->owner = $premise->owner;
+
+            // check for region
+            if($premise->region_id != 9999)
+                $premise->region = $premise->region;
+            else $premise->region = $this->unknown_region;
+
+            // Check for district
+            if($premise->district_id != 9999)
+                $premise->district = $premise->district;
+            else $premise->district = $this->unknown_district;
+
+            // Check for ward
+            if($premise->ward_id !== 9999)
+                $premise->ward = $premise->ward;
+            else $premise->ward = $this->unknown_ward;
+
+            // Getting owners
+            if($premise->owners_ids){
+                $owners_ids = explode(":",$premise->owners_ids);
+                if(count($owners_ids) > 0){
+                    for($x=0;$x < count($owners_ids); $x++){
+                        $owner = Owner::find($owners_ids[$x]);
+                        if(!empty($owner) && isset($owner->id)){
+                            $owners[] = $owner;
+                        }
+                    }
+                }
+            }
             $premise->pharmacist = $premise->pharmacist;
         }
         else $status = 404;

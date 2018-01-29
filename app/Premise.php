@@ -8,7 +8,7 @@ class Premise extends Model
 {
     protected $fillable = ['fin', 'registration_date', 'name', 'category', 'category_code', 'country', 
             'region_id', 'district_id', 'ward_id', 'village', 'village_code',
-            'physical', 'owner_id', 'postal_address', 'fax', 'pharmacist_id',
+            'physical', 'owners_ids', 'postal_address', 'fax', 'pharmacist_id',
             'pharmaceutical_personnel_id', 'submitted_dispenser_contract', 'permit_profit_amount',
             'receipt_no', 'payment_date', 'remarks', 'data_entry_code', 'premise_fees_due', 'retention_due',
             'renewal_status', 'black_book_list', 'extra_payment'];

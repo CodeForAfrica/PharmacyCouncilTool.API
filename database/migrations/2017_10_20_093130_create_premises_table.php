@@ -28,7 +28,7 @@ class CreatePremisesTable extends Migration
             $table->string('village_code')->nullable();
             $table->string('physical')->nullable();
             $table->integer('pharmacist_id')->nullable();
-            $table->integer('owner_id')->nullable();
+            $table->string('owners_ids')->nullable();
             $table->string('postal_address')->nullable();
             $table->string('fax')->nullable();
             $table->integer('pharmaceutical_personnel_id')->nullable();
