@@ -22,9 +22,4 @@ class Addo extends Model
     {
         return $this->belongsTo('App\Ward');
     }
-
-    public function owner()
-    {
-        return $this->belongsTo('App\Owner');
-    }
 }

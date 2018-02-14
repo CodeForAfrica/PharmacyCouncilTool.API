@@ -36,6 +36,16 @@ class PremiseController extends Controller
         'keycode' => "UNKNOWN"
     );
 
+    public $unknown_personnel = array(
+        'type' => "UNKNOWN",
+        'keycode' => 00,
+        'firstname' => "UNKNOWN",
+        'middlename' => "UNKNOWN",
+        'surname' => "UNKNOWN",
+        'phone' => "UNKNOWN",
+        'email' => "UNKNOWN"
+    );
+
     public function index(Request $request)
     {
         $queryBuilder = new QueryBuilder(new Premise, $request);
@@ -81,7 +91,11 @@ class PremiseController extends Controller
                 }
 
                 $premise->owners = $owners;
-                $premise->pharmacist = $premise->pharmacist;
+
+                // Check for pharmacist
+                if($premise->pharmacist_id !== 9999)
+                    $premise->pharmacist = $premise->pharmacist;
+                else $premise->pharmacist = $this->unknown_personnel;
             }
             else
             {
@@ -132,7 +146,11 @@ class PremiseController extends Controller
                     }
 
                     $premises[$x]->owners = $owners;
-                    $premises[$x]->pharmacist = $premises[$x]->pharmacist;
+
+                    // Check for pharmacist
+                    if($premises[$x]->pharmacist_id !== 9999)
+                        $premises[$x]->pharmacist = $premises[$x]->pharmacist;
+                    else $premises[$x]->pharmacist = $this->unknown_personnel;
                 }
             }
             else $status = 404;
@@ -144,7 +162,7 @@ class PremiseController extends Controller
         }
     }
 
-    public function show(Premise $premise)
+    public function show(Premise $premise)      
     {
         $status = "";
         $owners = array();
