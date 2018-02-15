@@ -3840,5 +3840,631 @@ class TopologySeeder extends Seeder
             Ward::create(['district_id' => $district_id,'name' => "Unyambwa"]);
             Ward::create(['district_id' => $district_id,'name' => "Unyamikumbi"]);
             Ward::create(['district_id' => $district_id,'name' => "Utemini"]);
+
+        // Songwe Region
+        Region::create([
+            'name' => "Songwe",
+            'capital' => "Vwawa",
+            'districts' => 5,
+            'keycode' => "26",
+            'area' => "27,656 Km Square",
+            'population' => '',
+            'postcode' => '',
+            'zone' => 'Southern Highlands'
+        ]);
+
+        // Tabora Region
+        Region::create([
+            'name' => "Tabora",
+            'capital' => "Tabora",
+            'districts' => 7,
+            'keycode' => "00",
+            'area' => "76,150 Km Square",
+            'population' => '2,291,623',
+            'postcode' => '45xxx',
+            'zone' => 'Central'
+        ]);
+
+        // Igunga - District
+        District::create(['region_id' => 26,'name' => "Igunga",'capital' => "Igunga",'area' => '','population' => '399,727']);
+
+            // Igunga Wards:
+            $district_id = 125;
+            Ward::create(['district_id' => $district_id,'name' => "Igunga"]);
+            Ward::create(['district_id' => $district_id,'name' => "Bukoko"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mtunguru"]);
+            Ward::create(['district_id' => $district_id,'name' => "Nanga"]);
+            Ward::create(['district_id' => $district_id,'name' => "Itumba"]);
+            Ward::create(['district_id' => $district_id,'name' => "Nguvumoja"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mbutu"]);
+            Ward::create(['district_id' => $district_id,'name' => "Isakamaliwa"]);
+            Ward::create(['district_id' => $district_id,'name' => "Igurubi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kinungu"]);
+            Ward::create(['district_id' => $district_id,'name' => "Itunduru"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kining'inila"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mwamashiga"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mwamashimba"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mwamakona"]);
+            Ward::create(['district_id' => $district_id,'name' => "Choma Chankola"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ngulu"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ntobo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mwashiku"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ziba"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ibologero"]);
+            Ward::create(['district_id' => $district_id,'name' => "Nyandekwa"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kitangiri"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ndembezi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Nkinga"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ugaka"]);
+            Ward::create(['district_id' => $district_id,'name' => "Simbo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mwisi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Chabutwa"]);
+            Ward::create(['district_id' => $district_id,'name' => "Sungwisi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mwamala"]);
+            Ward::create(['district_id' => $district_id,'name' => "Uswaya"]);
+            Ward::create(['district_id' => $district_id,'name' => "Tambarale"]);
+            Ward::create(['district_id' => $district_id,'name' => "Igoweko"]);
+
+        // Kaliua - District
+        District::create(['region_id' => 26,'name' => "Kaliua",'capital' => "Kaliua",'area' => '','population' => '393,358']);
+
+            // Kaliua Wards:
+            $district_id = 126;
+            Ward::create(['district_id' => $district_id,'name' => "Ichemba"]);
+            Ward::create(['district_id' => $district_id,'name' => "Igagala"]);
+            Ward::create(['district_id' => $district_id,'name' => "IgombeMkulu"]);
+            Ward::create(['district_id' => $district_id,'name' => "Igwisi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kaliua"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kamsekwa"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kanindo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kanoge"]);
+            Ward::create(['district_id' => $district_id,'name' => "Makingi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kashishi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kazaroho"]);
+            Ward::create(['district_id' => $district_id,'name' => "Milambo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mwongozo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Sasu"]);
+            Ward::create(['district_id' => $district_id,'name' => "Seleli"]);
+            Ward::create(['district_id' => $district_id,'name' => "Silambo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ugunga"]);
+            Ward::create(['district_id' => $district_id,'name' => "UkumbiSiganga"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ushokola"]);
+            Ward::create(['district_id' => $district_id,'name' => "Usenye"]);
+            Ward::create(['district_id' => $district_id,'name' => "Usinge"]);
+            Ward::create(['district_id' => $district_id,'name' => "Uyowa"]);
+            Ward::create(['district_id' => $district_id,'name' => "Zugimlole"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ng'whande"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ilege"]);
+            Ward::create(['district_id' => $district_id,'name' => "Konanne"]);
+            Ward::create(['district_id' => $district_id,'name' => "Usimba"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ufukutwa"]);
+        
+        // Nzega - District
+        District::create(['region_id' => 26,'name' => "Nzega",'capital' => "Nzega",'area' => '','population' => '502,252']);
+
+            // Nzega Wards:
+            $district_id = 127;
+            Ward::create(['district_id' => $district_id,'name' => "Budushi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Bukene"]);
+            Ward::create(['district_id' => $district_id,'name' => "Igusule"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ijanija"]);
+            Ward::create(['district_id' => $district_id,'name' => "Isagenhe"]);
+            Ward::create(['district_id' => $district_id,'name' => "Isanzu"]);
+            Ward::create(['district_id' => $district_id,'name' => "Itilo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Itobo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kahamanhalanga"]);
+            Ward::create(['district_id' => $district_id,'name' => "Karitu"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kasela"]);
+            Ward::create(['district_id' => $district_id,'name' => "Lusu"]);
+            Ward::create(['district_id' => $district_id,'name' => "Magengati"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mambali"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mbogwe"]);
+            Ward::create(['district_id' => $district_id,'name' => "Miguwa"]);
+            Ward::create(['district_id' => $district_id,'name' => "Milambo Itobo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mizibaziba"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mogwa"]);
+            Ward::create(['district_id' => $district_id,'name' => "Muhugi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mwakashanhala"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mwamala"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mwangoye"]);
+            Ward::create(['district_id' => $district_id,'name' => "Nata"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ndala"]);
+            Ward::create(['district_id' => $district_id,'name' => "Nkiniziwa"]);
+            Ward::create(['district_id' => $district_id,'name' => "Nzega Mjini"]);
+            Ward::create(['district_id' => $district_id,'name' => "Nzegandogo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Puge"]);
+            Ward::create(['district_id' => $district_id,'name' => "Semembela"]);
+            Ward::create(['district_id' => $district_id,'name' => "Shiganda"]);
+            Ward::create(['district_id' => $district_id,'name' => "Sigili"]);
+            Ward::create(['district_id' => $district_id,'name' => "Tongi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Uduka"]);
+            Ward::create(['district_id' => $district_id,'name' => "Utwigu"]);
+            Ward::create(['district_id' => $district_id,'name' => "Wela"]);
+
+        // Sikonge - District
+        District::create(['region_id' => 26,'name' => "Sikonge",'capital' => "Sikonge",'area' => '','population' => '179,883']);
+
+            // Sikonge Wards:
+            $district_id = 128;
+            Ward::create(['district_id' => $district_id,'name' => "Chabutwa"]);
+            Ward::create(['district_id' => $district_id,'name' => "Igigwa"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ipole"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kaloleli"]);
+            Ward::create(['district_id' => $district_id,'name' => "kiloli"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kipanga"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kipili"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kisanga"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kitunda"]);
+            Ward::create(['district_id' => $district_id,'name' => "Misheni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mole"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mpombwe"]);
+            Ward::create(['district_id' => $district_id,'name' => "Pangale"]);
+            Ward::create(['district_id' => $district_id,'name' => "Sikonge"]);
+            Ward::create(['district_id' => $district_id,'name' => "Tutuo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Usunga"]);
+        
+        // Tabora Urban - District
+        District::create(['region_id' => 26,'name' => "Tabora Urban",'capital' => "Tabora",'area' => '','population' => '226,999']);
+
+            // Tabora Urban Wards:
+            $district_id = 129;
+            Ward::create(['district_id' => $district_id,'name' => "Chemchem"]);
+            Ward::create(['district_id' => $district_id,'name' => "Cheyo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Gongoni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ifucha"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ikomwa"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ipuli"]);
+            Ward::create(['district_id' => $district_id,'name' => "Isevya"]);
+            Ward::create(['district_id' => $district_id,'name' => "Itetemia"]);
+            Ward::create(['district_id' => $district_id,'name' => "Itonjanda"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kabila"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kakola"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kalunde"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kanyenye"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kiloleni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kitete"]);
+            Ward::create(['district_id' => $district_id,'name' => "Malolo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mbugani"]);
+            Ward::create(['district_id' => $district_id,'name' => "Misha"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mtendeni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ndevelwa"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ng'ambo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ntalikwa"]);
+            Ward::create(['district_id' => $district_id,'name' => "Tambukareli"]);
+            Ward::create(['district_id' => $district_id,'name' => "Tumbi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Uyui"]);
+
+        // Urambo - District
+        District::create(['region_id' => 26,'name' => "Urambo",'capital' => "Urambo",'area' => '','population' => '192,781']);
+
+            // Urambo Wards:
+            $district_id = 130;
+            Ward::create(['district_id' => $district_id,'name' => "Imalamakoye"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kapilula"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kasisi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kiloleni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Muungano"]);
+            Ward::create(['district_id' => $district_id,'name' => "Nsenda"]);
+            Ward::create(['district_id' => $district_id,'name' => "Songambele"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ugalla"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ukondamoyo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Urambo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Usisya"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ussoke"]);
+            Ward::create(['district_id' => $district_id,'name' => "Utundu"]);
+            Ward::create(['district_id' => $district_id,'name' => "Uyogo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Uyumbu"]);
+            Ward::create(['district_id' => $district_id,'name' => "Vumilia"]);
+        
+        // Uyui - District
+        District::create(['region_id' => 26,'name' => "Uyui",'capital' => "Uyui",'area' => '','population' => '396,623']);
+
+            // Uyui Wards:
+            $district_id = 131;
+            Ward::create(['district_id' => $district_id,'name' => "Bukumbi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Goweko"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ibelamilundi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ibiri"]);
+            Ward::create(['district_id' => $district_id,'name' => "Igalula"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ikongolo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ilolanguru"]);
+            Ward::create(['district_id' => $district_id,'name' => "Isikizya"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kigwa"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kizengi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Loya"]);
+            Ward::create(['district_id' => $district_id,'name' => "Lutende"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mabama"]);
+            Ward::create(['district_id' => $district_id,'name' => "Magiri"]);
+            Ward::create(['district_id' => $district_id,'name' => "Miswaki"]);
+            Ward::create(['district_id' => $district_id,'name' => "Miyenze"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ndono"]);
+            Ward::create(['district_id' => $district_id,'name' => "Nsimbo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Nsololo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Shitage"]);
+            Ward::create(['district_id' => $district_id,'name' => "Tura"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ufuluma"]);
+            Ward::create(['district_id' => $district_id,'name' => "Upuge"]);
+            Ward::create(['district_id' => $district_id,'name' => "Usagari"]);
+        
+        // Tanga Region
+        Region::create([
+            'name' => "Tanga",
+            'capital' => "Tanga",
+            'districts' => 10,
+            'keycode' => "04",
+            'area' => "26,667 Km Square",
+            'population' => '2,045,205',
+            'postcode' => '21xxx',
+            'zone' => 'Northern'
+        ]);
+
+        // Handeni - District
+        District::create(['region_id' => 26,'name' => "Handeni",'capital' => "Handeni",'area' => '','population' => '355,702']);
+
+            // Handeni Wards:
+            // $district_id = 0;
+            // Ward::create(['district_id' => $district_id,'name' => ""]);
+        
+        // Kilindi - District
+        District::create(['region_id' => 26,'name' => "Kilindi",'capital' => "Kilindi",'area' => '','population' => '236,833']);
+
+            // Kilindi Wards:
+            $district_id = 132;
+            Ward::create(['district_id' => $district_id,'name' => "Jaila"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kikunde"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kilindi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kimbe"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kisangasa"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kwediboma"]);
+            Ward::create(['district_id' => $district_id,'name' => "Lwande"]);
+            Ward::create(['district_id' => $district_id,'name' => "Masagulu"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mkindi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Msanja"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mvungwe"]);
+            Ward::create(['district_id' => $district_id,'name' => "Negero"]);
+            Ward::create(['district_id' => $district_id,'name' => "Pagwi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Saunyi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Songe"]);
+            Ward::create(['district_id' => $district_id,'name' => "Tunguli"]);
+        
+        // Korogwe - District
+        District::create(['region_id' => 26,'name' => "Korogwe",'capital' => "Korogwe",'area' => '','population' => '310,346']);
+
+            // Korogwe Wards:
+            $district_id = 133;
+            Ward::create(['district_id' => $district_id,'name' => "Bungu"]);
+            Ward::create(['district_id' => $district_id,'name' => "Chekelei"]);
+            Ward::create(['district_id' => $district_id,'name' => "Dindira"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kizara"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kerenge"]);
+            Ward::create(['district_id' => $district_id,'name' => "Korogwe"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kwagunda"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kwamndolwa"]);
+            Ward::create(['district_id' => $district_id,'name' => "Lutindi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Magoma"]);
+            Ward::create(['district_id' => $district_id,'name' => "Makuyuni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mashewa"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mazinde"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mkalamo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mkomazi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mombo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Msambiazi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mnyuzi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ngombezi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Vugiri"]);
+        
+        // Lushoto - District
+        District::create(['region_id' => 26,'name' => "Lushoto",'capital' => "Lushoto",'area' => '','population' => '492,441']);
+
+            // Lushoto Wards:
+            $district_id = 134;
+            Ward::create(['district_id' => $district_id,'name' => "Bagha"]);
+            Ward::create(['district_id' => $district_id,'name' => "Bumbuli"]);
+            Ward::create(['district_id' => $district_id,'name' => "Funa"]);
+            Ward::create(['district_id' => $district_id,'name' => "Gae"]);
+            Ward::create(['district_id' => $district_id,'name' => "Hemtoye"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kwai"]);
+            Ward::create(['district_id' => $district_id,'name' => "Lunguza"]);
+            Ward::create(['district_id' => $district_id,'name' => "Lushoto"]);
+            Ward::create(['district_id' => $district_id,'name' => "Malibwi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Makanya"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mbwei"]);
+            Ward::create(['district_id' => $district_id,'name' => "Magamba"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mayo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mbaramo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mbuzii"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mgwashi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mlalo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mlingano"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mlola"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mnazi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mng'aro"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mponde"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mtae"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mwangoi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ngwelo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Rangwi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Shume"]);
+            Ward::create(['district_id' => $district_id,'name' => "Soni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Sunga"]);
+            Ward::create(['district_id' => $district_id,'name' => "Tamota"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ubiri"]);
+            Ward::create(['district_id' => $district_id,'name' => "Vugha"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kannada"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kilole"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kwekanga"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kwemashai Ngulwi"]);
+
+        // Muheza - District
+        District::create(['region_id' => 26,'name' => "Muheza",'capital' => "Muheza",'area' => '','population' => '204,461']);
+
+            // Muheza Wards:
+            $district_id = 135;
+            Ward::create(['district_id' => $district_id,'name' => "Bwembwera"]);
+            Ward::create(['district_id' => $district_id,'name' => "Daluni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Duga"]);
+            Ward::create(['district_id' => $district_id,'name' => "Gombero"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kicheba"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kigongoi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Lusanga"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kigombe"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kilulu"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kisiwani"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kwafungo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kwale"]);
+            Ward::create(['district_id' => $district_id,'name' => "Magila"]);
+            Ward::create(['district_id' => $district_id,'name' => "Magoroto"]);
+            Ward::create(['district_id' => $district_id,'name' => "Majengo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Manza"]);
+            Ward::create(['district_id' => $district_id,'name' => "Maramba"]);
+            Ward::create(['district_id' => $district_id,'name' => "Masuguru"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mbaramo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mhinduro"]);
+            Ward::create(['district_id' => $district_id,'name' => "Misilai"]);
+            Ward::create(['district_id' => $district_id,'name' => "Misozwe"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mkinga"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mkuzi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Moa"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mtimbwane"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mtindiro"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mwakijembe"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ngomeni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Nkumba"]);
+            Ward::create(['district_id' => $district_id,'name' => "Pande"]);
+            Ward::create(['district_id' => $district_id,'name' => "Potwe"]);
+            Ward::create(['district_id' => $district_id,'name' => "Songa"]);
+            Ward::create(['district_id' => $district_id,'name' => "Tingeni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Zirai"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mkumbi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Enzi"]);
+
+        // Mkinga - District
+        District::create(['region_id' => 26,'name' => "Mkinga",'capital' => "Mkinga",'area' => '','population' => '118,065']);
+
+            // Mkinga Wards:
+            // $district_id = 0;
+            // Ward::create(['district_id' => $district_id,'name' => ""]);
+
+        // Pangani - District
+        District::create(['region_id' => 26,'name' => "Pangani",'capital' => "Pangani",'area' => '','population' => '54,025']);
+
+            // Pangani Wards:
+            $district_id = 136;
+            Ward::create(['district_id' => $district_id,'name' => "Bushiri"]);
+            Ward::create(['district_id' => $district_id,'name' => "Bweni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kimang'a"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kipumbwi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Madanga"]);
+            Ward::create(['district_id' => $district_id,'name' => "Masika"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mikinguni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mkalamo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mkwaja"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mwera"]);
+            Ward::create(['district_id' => $district_id,'name' => "Pangani A"]);
+            Ward::create(['district_id' => $district_id,'name' => "Pangani B"]);
+            Ward::create(['district_id' => $district_id,'name' => "Tungamaa"]);
+            Ward::create(['district_id' => $district_id,'name' => "Ubangaa"]);
+
+        // Tanga - District
+        District::create(['region_id' => 26,'name' => "Tanga",'capital' => "Tanga",'area' => '','population' => '273,332']);
+
+            // Tanga Wards:
+            // $district_id = 0;
+            // Ward::create(['district_id' => $district_id,'name' => ""]);
+
+        // Zanzibar Kaskazini Region
+        Region::create([
+            'name' => "Zanzibar Kaskazini",
+            'capital' => "Mkokotoni",
+            'districts' => 2,
+            'keycode' => "00",
+            'area' => "470 Km Square",
+            'population' => '187,455',
+            'postcode' => '73xxx',
+            'zone' => 'Zanzibar'
+        ]);
+
+        // Kaskazini A - District
+        District::create(['region_id' => 27,'name' => "Kaskazini A",'capital' => "Kaskazini A",'area' => '','population' => '84,348']);
+
+            // Kaskazini A Wards:
+            $district_id = 137;
+            Ward::create(['district_id' => $district_id,'name' => "Bandamaji"]);
+            Ward::create(['district_id' => $district_id,'name' => "Chaani Kubwa"]);
+            Ward::create(['district_id' => $district_id,'name' => "Chaani Masingini"]);
+            Ward::create(['district_id' => $district_id,'name' => "Fukuchani"]);
+            Ward::create(['district_id' => $district_id,'name' => "Gamba"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kandwi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kibeni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kidoti"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kigunda"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kijini"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kikobweni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kinyasini"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kivinge"]);
+            Ward::create(['district_id' => $district_id,'name' => "Matemwe"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mchena Shauri"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mkokotoni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mkwajuni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Moga"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mto Pwani"]);
+            Ward::create(['district_id' => $district_id,'name' => "Muwange"]);
+            Ward::create(['district_id' => $district_id,'name' => "Nungwi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Pale"]);
+            Ward::create(['district_id' => $district_id,'name' => "Pitanazako"]);
+            Ward::create(['district_id' => $district_id,'name' => "Potoa"]);
+            Ward::create(['district_id' => $district_id,'name' => "Pwani Mchangani"]);
+            Ward::create(['district_id' => $district_id,'name' => "Tazari"]);
+            Ward::create(['district_id' => $district_id,'name' => "Tumbatu Gomani"]);
+            Ward::create(['district_id' => $district_id,'name' => "Tumbatu Jongowe"]);
+
+        // Kaskazini B - District
+        District::create(['region_id' => 27,'name' => "Kaskazini B",'capital' => "Kaskazini B",'area' => '','population' => '84,348']);
+
+            // Kaskazini B Wards:
+            $district_id = 138;
+            Ward::create(['district_id' => $district_id,'name' => "Done Mchagani"]);
+            Ward::create(['district_id' => $district_id,'name' => "Donge Karange"]);
+            Ward::create(['district_id' => $district_id,'name' => "Donge Kipange"]);
+            Ward::create(['district_id' => $district_id,'name' => "Donge Mbiji"]);
+            Ward::create(['district_id' => $district_id,'name' => "Donge Mnyimbi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Donge Mtambile"]);
+            Ward::create(['district_id' => $district_id,'name' => "Donge Vijibweni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Fujoni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kinduni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kiomba Mvua"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kiombero"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kitope"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kiwengwa"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mahonda"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mahonda"]);
+            Ward::create(['district_id' => $district_id,'name' => "Makoba"]);
+            Ward::create(['district_id' => $district_id,'name' => "Manga Pwani"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mgambo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Misufini"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mkadini"]);
+            Ward::create(['district_id' => $district_id,'name' => "Muwanda"]);
+            Ward::create(['district_id' => $district_id,'name' => "Pangeni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Upenja"]);
+            Ward::create(['district_id' => $district_id,'name' => "Zingwe Zingwe"]);
+
+        // Zanzibar Kusini Region
+        Region::create([
+            'name' => "Zanzibar Kusini",
+            'capital' => "Koani",
+            'districts' => 2,
+            'keycode' => "00",
+            'area' => "854 Km Square",
+            'population' => '115,588',
+            'postcode' => '72xxx',
+            'zone' => 'Zanzibar'
+        ]);
+
+        // Kati - District
+        District::create(['region_id' => 28,'name' => "Kati",'capital' => "Kati",'area' => '','population' => '76,346']);
+
+            // Kati Wards:
+            // $district_id = 0;
+            // Ward::create(['district_id' => $district_id,'name' => ""]);
+
+        // Kusini - District
+        District::create(['region_id' => 29,'name' => "Kusini",'capital' => "Kusini",'area' => '','population' => '39,242']);
+
+            // Kusini Wards:
+            // $district_id = 0;
+            // Ward::create(['district_id' => $district_id,'name' => ""]);
+
+        // Zanzibar Urban Region
+        Region::create([
+            'name' => "Zanzibar Urban",
+            'capital' => "Zanzibar City",
+            'districts' => 2,
+            'keycode' => "00",
+            'area' => "230 Km Square",
+            'population' => '593,678',
+            'postcode' => '71xxx',
+            'zone' => 'Zanzibar'
+        ]);
+
+        // Magharibi - District
+        District::create(['region_id' => 30,'name' => "Magharibi",'capital' => "Magharibi",'area' => '','population' => '370,645']);
+
+            // Magharibi Wards:
+            $district_id = 139;
+            Ward::create(['district_id' => $district_id,'name' => "Mwera"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mtoni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Bububu"]);
+            Ward::create(['district_id' => $district_id,'name' => "Chuini"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kama"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mfenesini"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mwakaje"]);
+            Ward::create(['district_id' => $district_id,'name' => "Fuoni Kibondeni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kianga"]);
+            Ward::create(['district_id' => $district_id,'name' => "Dole"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kizimbani"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mbuzini"]);
+            Ward::create(['district_id' => $district_id,'name' => "Bumbwisudi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Maungani"]);
+            Ward::create(['district_id' => $district_id,'name' => "Shakani"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kiembe Samaki"]);
+            Ward::create(['district_id' => $district_id,'name' => "Chukwani"]);
+            Ward::create(['district_id' => $district_id,'name' => "Fumba"]);
+            Ward::create(['district_id' => $district_id,'name' => "Bweleo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Dimani"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kombeni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mwanakwerekwe"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mto Pepo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Magogoni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mtoni Kidatu"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mwanyanya"]);
+            Ward::create(['district_id' => $district_id,'name' => "Fuoni Kijitoupele"]);
+            Ward::create(['district_id' => $district_id,'name' => "Tomondo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Welezo"]);
+
+        // Zanzibar City - District
+        District::create(['region_id' => 30,'name' => "Zanzibar City",'capital' => "Zanzibar",'area' => '','population' => '370,645']);
+
+            // Magharibi Wards:
+            $district_id = 140;
+            Ward::create(['district_id' => $district_id,'name' => "Shangazi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mkunazini"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kiponda"]);
+            Ward::create(['district_id' => $district_id,'name' => "Malindi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mchangani"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mlandege"]);
+            Ward::create(['district_id' => $district_id,'name' => "Muembe Ladu"]);
+            Ward::create(['district_id' => $district_id,'name' => "Gulioni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Makadara"]);
+            Ward::create(['district_id' => $district_id,'name' => "Shaurimoyo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Muembe Makumbi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Chumbuni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kwamtipura"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kilimahewa"]);
+            Ward::create(['district_id' => $district_id,'name' => "Amaani"]);
+            Ward::create(['district_id' => $district_id,'name' => "Nyerere"]);
+            Ward::create(['district_id' => $district_id,'name' => "Sebleni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Magomeni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mpendae"]);
+            Ward::create(['district_id' => $district_id,'name' => "Urusi"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kilimani"]);
+            Ward::create(['district_id' => $district_id,'name' => "Miembeni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kikwajuni Juu"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kikwajuni Bondeni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kisima Majongoo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Vikokotoni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mwembetanga"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mwembeshauri"]);
+            Ward::create(['district_id' => $district_id,'name' => "Rahaleo"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kwaalamsha"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mikunguni"]);
+            Ward::create(['district_id' => $district_id,'name' => "Mkele"]);
+            Ward::create(['district_id' => $district_id,'name' => "Muungano"]);
+            Ward::create(['district_id' => $district_id,'name' => "Sogea"]);
+            Ward::create(['district_id' => $district_id,'name' => "Jang'ombe"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kidongo Chekundu"]);
+            Ward::create(['district_id' => $district_id,'name' => "Matarumbeta"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kwahani"]);
+            Ward::create(['district_id' => $district_id,'name' => "Kwaalinato"]);
+            Ward::create(['district_id' => $district_id,'name' => "Karakana"]);
     }
 }
