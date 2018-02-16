@@ -20,6 +20,7 @@ class CreateOwnersTable extends Migration
             $table->string("surname")->nullable();
             $table->string("phone")->nullable();
             $table->string("email")->nullable();
+            $table->string("occupation")->nullable();
             $table->string("status")->nullable();
             $table->timestamps();
         });

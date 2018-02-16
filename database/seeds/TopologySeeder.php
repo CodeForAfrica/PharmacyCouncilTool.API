@@ -20,6 +20,11 @@ class TopologySeeder extends Seeder
         District::truncate();
         Ward::truncate();
 
+        // Initial values
+        $region_id = 0;
+        $district_id = 0;
+        $ward_id = 0;
+
         // Arusha Region
         Region::create([
             'name' => "Arusha",
@@ -33,10 +38,10 @@ class TopologySeeder extends Seeder
         ]);
 
         // Arusha Districts
-        // Arusha City - District
-        District::create(['region_id' => 1,'name' => "Arusha City",'capital' => 'Arusha','area' => '93 Km Square','population' => '416,122']);
+        // Arusha Urban - District
+        District::create(['region_id' => 1,'name' => "Arusha Urban",'capital' => 'Arusha','area' => '93 Km Square','population' => '416,122']);
 
-            // Arusha City Wards:
+            // Arusha Urban Wards:
             $district_id = 1;
             Ward::create(['district_id' => $district_id,'name' => "Baraa"]);
             Ward::create(['district_id' => $district_id,'name' => "Daraja Mbili"]);
@@ -832,10 +837,10 @@ class TopologySeeder extends Seeder
             Ward::create(['district_id' => $district_id,'name' => "Sadani"]);
 
         // Iringa Rural - District
-        District::create(['region_id' => 5,'name' => "iringa Rural",'capital' => "Iringa",'area' => '','population' => '151,345']);
+        District::create(['region_id' => 5,'name' => "Iringa Rural",'capital' => "Iringa",'area' => '','population' => '151,345']);
 
             // Iringa  Rural Wards:
-            $district_id = 27;
+            $district_id = 28;
             Ward::create(['district_id' => $district_id,'name' => "Idodi"]);
             Ward::create(['district_id' => $district_id,'name' => "Ifunda"]);
             Ward::create(['district_id' => $district_id,'name' => "Ilolompya"]);
@@ -873,7 +878,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 6,'name' => "Biharamulo",'capital' => "Biharamulo",'area' => '5,627 Km Square','population' => '323,486']);
 
             // Biharamulo Wards:
-            $district_id = 28;
+            $district_id = 29;
             Ward::create(['district_id' => $district_id,'name' => "Biharamulo Urban"]);
             Ward::create(['district_id' => $district_id,'name' => "Bisibo"]);
             Ward::create(['district_id' => $district_id,'name' => "Kabindi"]);
@@ -893,7 +898,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 6,'name' => "Bukoba Rural",'capital' => "Bukoba",'area' => '','population' => '289,697']);
 
             // Bukoba Rural Wards:
-            $district_id = 29;
+            $district_id = 30;
             Ward::create(['district_id' => $district_id,'name' => "Buhendangabo"]);
             Ward::create(['district_id' => $district_id,'name' => "Bujugo"]);
             Ward::create(['district_id' => $district_id,'name' => "Butelankuzi"]);
@@ -928,7 +933,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 6,'name' => "Bukoba Urban",'capital' => "Bukoba",'area' => '','population' => '128,796']);
 
             // Bukoba Urban Wards:
-            $district_id = 30;
+            $district_id = 31;
             Ward::create(['district_id' => $district_id,'name' => "Bukoba"]);
             Ward::create(['district_id' => $district_id,'name' => "Bilele"]);
             Ward::create(['district_id' => $district_id,'name' => "Buhemba"]);
@@ -948,7 +953,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 6,'name' => "Karagwe",'capital' => "Karagwe",'area' => '7,716 Km Square','population' => '332,020']);
 
             // Karagwe Wards:
-            $district_id = 31;
+            $district_id = 32;
             Ward::create(['district_id' => $district_id,'name' => "Bugene"]);
             Ward::create(['district_id' => $district_id,'name' => "Bugomora"]);
             Ward::create(['district_id' => $district_id,'name' => "Bweranyange"]);
@@ -986,7 +991,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 6,'name' => "Kyerwa",'capital' => "Kyerwa",'area' => '','population' => '321,026']);
 
             // Kyerwa Wards:
-            $district_id = 32;
+            $district_id = 33;
             Ward::create(['district_id' => $district_id,'name' => "Bugomora"]);
             Ward::create(['district_id' => $district_id,'name' => "Businde"]);
             Ward::create(['district_id' => $district_id,'name' => "Isingiro"]);
@@ -1010,7 +1015,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 6,'name' => "Missenyi",'capital' => "Missenyi",'area' => '2,709','population' => '202,632']);
 
             // Missenyi Wards:
-            $district_id = 33;
+            $district_id = 34;
             Ward::create(['district_id' => $district_id,'name' => "Bugandika"]);
             Ward::create(['district_id' => $district_id,'name' => "Bugorora"]);
             Ward::create(['district_id' => $district_id,'name' => "Buyango"]);
@@ -1036,7 +1041,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 6,'name' => "Muleba",'capital' => "Muleba",'area' => '10,739','population' => '540,310']);
 
             // Muleba Wards:
-            $district_id = 34;
+            $district_id = 35;
             Ward::create(['district_id' => $district_id,'name' => "Bisheke"]);
             Ward::create(['district_id' => $district_id,'name' => "Biirabo"]);
             Ward::create(['district_id' => $district_id,'name' => "Buganguzi"]);
@@ -1070,7 +1075,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 6,'name' => "Ngara",'capital' => "Muleba",'area' => '3,744','population' => '320,056']);
 
             // Ngara Wards:
-            $district_id = 35;
+            $district_id = 36;
             Ward::create(['district_id' => $district_id,'name' => "Bukiriro"]);
             Ward::create(['district_id' => $district_id,'name' => "Bugarama"]);
             Ward::create(['district_id' => $district_id,'name' => "Kabanga"]);
@@ -1106,14 +1111,14 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 7,'name' => "Nsimbo",'capital' => "Nsimbo",'area' => '','population' => '282,568']);
 
             // Nsimbo Wards:
-            // $district_id = 0;
+            $district_id = 37;
             // Ward::create(['district_id' => $district_id,'name' => ""]);
 
         // Mpanda - District
         District::create(['region_id' => 7,'name' => "Mpanda",'capital' => "Mpanda",'area' => '','population' => '282,036']);
 
             // Mpanda Wards:
-            $district_id = 36;
+            $district_id = 38;
             Ward::create(['district_id' => $district_id,'name' => "Ikola"]);
             Ward::create(['district_id' => $district_id,'name' => "Ilembo"]);
             Ward::create(['district_id' => $district_id,'name' => "Kabungu"]);
@@ -1137,7 +1142,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 7,'name' => "Mlele",'capital' => "Mlele",'area' => '','population' => '']);
 
             // Mlele Wards:
-            // $district_id = 0;
+            $district_id = 39;
             // Ward::create(['district_id' => $district_id,'name' => ""]);
 
         // Kigoma Region
@@ -1156,7 +1161,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 8,'name' => "Buhingwe",'capital' => "Buhingwe",'area' => '','population' => '254,342']);
 
             // Buhingwe Wards:
-            $district_id = 37;
+            $district_id = 40;
             Ward::create(['district_id' => $district_id,'name' => "Biharu"]);
             Ward::create(['district_id' => $district_id,'name' => "Buhigwe"]);
             Ward::create(['district_id' => $district_id,'name' => "Janda"]);
@@ -1183,7 +1188,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 8,'name' => "Kakonko",'capital' => "Kakonko",'area' => '','population' => '167,555']);
 
             // Kakonko Wards:
-            $district_id = 38;
+            $district_id = 41;
             Ward::create(['district_id' => $district_id,'name' => "Gwarama"]);
             Ward::create(['district_id' => $district_id,'name' => "Gwanumpu"]);
             Ward::create(['district_id' => $district_id,'name' => "Kakonko"]);
@@ -1202,7 +1207,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 8,'name' => "Kasulu Rural",'capital' => "Kasulu",'area' => '','population' => '425,794']);
 
             // Kasulu Rural Wards:
-            $district_id = 39;
+            $district_id = 42;
             Ward::create(['district_id' => $district_id,'name' => "Buhigwe"]);
             Ward::create(['district_id' => $district_id,'name' => "Buhoro"]);
             Ward::create(['district_id' => $district_id,'name' => "Heru Ushingo"]);
@@ -1238,14 +1243,14 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 8,'name' => "Kasulu Urban",'capital' => "Kasulu",'area' => '','population' => '208,244']);
 
             // Kasulu Urban Wards:
-            // $district_id = 0;
+            $district_id = 43;
             // Ward::create(['district_id' => $district_id,'name' => ""]);
         
         // Kibondo - District
         District::create(['region_id' => 8,'name' => "Kibondo",'capital' => "Kibondo",'area' => '','population' => '261,331']);
 
             // Kibondo Wards:
-            $district_id = 40;
+            $district_id = 44;
             Ward::create(['district_id' => $district_id,'name' => "Bunyambo"]);
             Ward::create(['district_id' => $district_id,'name' => "Busagara"]);
             Ward::create(['district_id' => $district_id,'name' => "Kitale Ward"]);
@@ -1270,21 +1275,21 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 8,'name' => "Kigoma Rural",'capital' => "Kigoma",'area' => '','population' => '211,566']);
 
         // Kibondo Rural Wards:
-        // $district_id = 0;
+        $district_id = 45;
         // Ward::create(['district_id' => $district_id,'name' => ""]);
 
         // Kigoma Urban - District
         District::create(['region_id' => 8,'name' => "Kigoma Urban",'capital' => "Kigoma",'area' => '','population' => '211,566']);
 
         // Kigoma  Wards:
-        // $district_id = 0;
+        $district_id = 46;
         // Ward::create(['district_id' => $district_id,'name' => ""]);
 
         // Uvinza - District
         District::create(['region_id' => 8,'name' => "Uvinza",'capital' => "Uvinza",'area' => '','population' => '383,640']);
 
         // Uvinza Wards:
-        // $district_id = 0;
+        $district_id = 47;
         // Ward::create(['district_id' => $district_id,'name' => ""]);
 
         // Kilimanjaro Region
@@ -1303,7 +1308,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 9,'name' => "Hai",'capital' => "Hai",'area' => '','population' => '210,533']);
 
             // Hai Wards:
-            $district_id = 41;
+            $district_id = 48;
             Ward::create(['district_id' => $district_id,'name' => "Hai Mjini"]);
             Ward::create(['district_id' => $district_id,'name' => "Machame Kaskazini"]);
             Ward::create(['district_id' => $district_id,'name' => "Machame Kusini"]);
@@ -1319,7 +1324,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 9,'name' => "Moshi Rural",'capital' => "Moshi",'area' => '','population' => '466,737']);
 
             // Moshi Rural Wards:
-            $district_id = 42;
+            $district_id = 49;
             Ward::create(['district_id' => $district_id,'name' => "Arusha Chini"]);
             Ward::create(['district_id' => $district_id,'name' => "Kahe"]);
             Ward::create(['district_id' => $district_id,'name' => "Kahe Mashariki"]);
@@ -1355,7 +1360,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 9,'name' => "Moshi Urban",'capital' => "Moshi",'area' => '','population' => '184,292']);
 
             // Moshi Urban Wards:
-            $district_id = 43;
+            $district_id = 50;
             Ward::create(['district_id' => $district_id,'name' => "Bondeni"]);
             Ward::create(['district_id' => $district_id,'name' => "Kaloleni"]);
             Ward::create(['district_id' => $district_id,'name' => "Karanga"]);
@@ -1382,7 +1387,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 9,'name' => "Mwanga",'capital' => "Mwanga",'area' => '','population' => '131,442']);
 
             // Mwanga Wards:
-            $district_id = 44;
+            $district_id = 51;
             Ward::create(['district_id' => $district_id,'name' => "Chomvu"]);
             Ward::create(['district_id' => $district_id,'name' => "Jipe"]);
             Ward::create(['district_id' => $district_id,'name' => "Kifula"]);
@@ -1404,7 +1409,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 9,'name' => "Rombo",'capital' => "Rombo",'area' => '','population' => '260,963']);
 
             // Mwanga Wards:
-            $district_id = 45;
+            $district_id = 52;
             Ward::create(['district_id' => $district_id,'name' => "Aleni"]);
             Ward::create(['district_id' => $district_id,'name' => "Holili"]);
             Ward::create(['district_id' => $district_id,'name' => "Katangara Mrere"]);
@@ -1433,7 +1438,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 9,'name' => "Same",'capital' => "Same",'area' => '','population' => '269,807']);
 
             // Same Wards:
-            $district_id = 46;
+            $district_id = 53;
             Ward::create(['district_id' => $district_id,'name' => "Bangalala"]);
             Ward::create(['district_id' => $district_id,'name' => "Bombo"]);
             Ward::create(['district_id' => $district_id,'name' => "Bendera"]);
@@ -1470,7 +1475,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 9,'name' => "Siha",'capital' => "Siha",'area' => '','population' => '116,313']);
 
             // Siha Wards:
-            $district_id = 47;
+            $district_id = 54;
             Ward::create(['district_id' => $district_id,'name' => "Biriri"]);
             Ward::create(['district_id' => $district_id,'name' => "Gararagua"]);
             Ward::create(['district_id' => $district_id,'name' => "Ivaeny"]);
@@ -1500,7 +1505,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 10,'name' => "Kilwa",'capital' => "Kilwa",'area' => '','population' => '190,744']);
 
             // Kilwa Wards:
-            $district_id = 47;
+            $district_id = 55;
             Ward::create(['district_id' => $district_id,'name' => "Chumo"]);
             Ward::create(['district_id' => $district_id,'name' => "kandawale"]);
             Ward::create(['district_id' => $district_id,'name' => "Kijumbi"]);
@@ -1526,7 +1531,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 10,'name' => "Lindi",'capital' => "Lindi",'area' => '','population' => '272,984']);
 
             // Lindi Wards:
-            $district_id = 48;
+            $district_id = 56;
             Ward::create(['district_id' => $district_id,'name' => "Jamhuri"]);
             Ward::create(['district_id' => $district_id,'name' => "Makonde"]);
             Ward::create(['district_id' => $district_id,'name' => "Matopeni"]);
@@ -1545,7 +1550,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 10,'name' => "Liwale",'capital' => "Liwale",'area' => '','population' => '91,380']);
 
             // Liwale Wards:
-            $district_id = 49;
+            $district_id = 57;
             Ward::create(['district_id' => $district_id,'name' => "Barikiwa"]);
             Ward::create(['district_id' => $district_id,'name' => "Kiang'ara"]);
             Ward::create(['district_id' => $district_id,'name' => "Kibutuka"]);
@@ -1571,7 +1576,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 10,'name' => "Nachingwea",'capital' => "Nachingwea",'area' => '','population' => '178,464']);
 
             // Nachingwea Wards:
-            $district_id = 50;
+            $district_id = 58;
             Ward::create(['district_id' => $district_id,'name' => "Chilola"]);
             Ward::create(['district_id' => $district_id,'name' => "Kiegei"]);
             Ward::create(['district_id' => $district_id,'name' => "Kilima Rondo"]);
@@ -1607,7 +1612,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 10,'name' => "Ruangwa",'capital' => "Ruangwa",'area' => '','population' => '131,080']);
 
             // Ruangwa Wards:
-            $district_id = 51;
+            $district_id = 59;
             Ward::create(['district_id' => $district_id,'name' => "Chibula"]);
             Ward::create(['district_id' => $district_id,'name' => "Chienjere"]);
             Ward::create(['district_id' => $district_id,'name' => "Chinongwe"]);
@@ -1647,7 +1652,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 11,'name' => "Babati Rural",'capital' => "Babati",'area' => '','population' => '312,392']);
 
             // Babati Rural Wards:
-            $district_id = 52;
+            $district_id = 60;
             Ward::create(['district_id' => $district_id,'name' => "Arri"]);
             Ward::create(['district_id' => $district_id,'name' => "Ayasanda"]);
             Ward::create(['district_id' => $district_id,'name' => "Bashnet"]);
@@ -1673,7 +1678,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 11,'name' => "Babati Urban",'capital' => "Babati",'area' => '','population' => '93,108']);
 
             // Babati Urban Wards:
-            $district_id = 53;
+            $district_id = 61;
             Ward::create(['district_id' => $district_id,'name' => "Babati"]);
             Ward::create(['district_id' => $district_id,'name' => "Bagara"]);
             Ward::create(['district_id' => $district_id,'name' => "Bonga"]);
@@ -1687,7 +1692,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 11,'name' => "Hanang",'capital' => "Hanang",'area' => '','population' => '275,990']);
 
             // Hanang Wards:
-            $district_id = 54;
+            $district_id = 62;
             Ward::create(['district_id' => $district_id,'name' => "Balagidalalu"]);
             Ward::create(['district_id' => $district_id,'name' => "Bassodesh"]);
             Ward::create(['district_id' => $district_id,'name' => "Bassotu"]);
@@ -1718,7 +1723,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 11,'name' => "kiteto",'capital' => "Kiteto",'area' => '','population' => '244,669']);
 
             // Kiteto Wards:
-            $district_id = 55;
+            $district_id = 63;
             Ward::create(['district_id' => $district_id,'name' => "Bwagamoyo"]);
             Ward::create(['district_id' => $district_id,'name' => "Dongo"]);
             Ward::create(['district_id' => $district_id,'name' => "Dosidosi"]);
@@ -1747,7 +1752,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 11,'name' => "Mbulu",'capital' => "Mbulu",'area' => '','population' => '320,279']);
 
             // Mbulu Wards:
-            $district_id = 56;
+            $district_id = 64;
             Ward::create(['district_id' => $district_id,'name' => "Ayamaami"]);
             Ward::create(['district_id' => $district_id,'name' => "Ayamohe"]);
             Ward::create(['district_id' => $district_id,'name' => "Bargish"]);
@@ -1785,7 +1790,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 11,'name' => "Simanjiro",'capital' => "Simanjiro",'area' => '','population' => '178,693']);
 
             // Simanjiro Wards:
-            $district_id = 57;
+            $district_id = 65;
             Ward::create(['district_id' => $district_id,'name' => "Emboreet"]);
             Ward::create(['district_id' => $district_id,'name' => "Endiamtu"]);
             Ward::create(['district_id' => $district_id,'name' => "Endonyongijape"]);
@@ -1820,7 +1825,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 12,'name' => "Bunda",'capital' => "Bunda",'area' => '','population' => '335,061']);
 
             // Bunda Wards:
-            $district_id = 58;
+            $district_id = 66;
             Ward::create(['district_id' => $district_id,'name' => "Balili"]);
             Ward::create(['district_id' => $district_id,'name' => "Bunda Mjini"]);
             Ward::create(['district_id' => $district_id,'name' => "Bunda Stoo"]);
@@ -1854,7 +1859,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 12,'name' => "Butiama",'capital' => "Butiama",'area' => '','population' => '241,732']);
 
             // Butiama Wards:
-            $district_id = 59;
+            $district_id = 67;
             Ward::create(['district_id' => $district_id,'name' => "Bisumwa"]);
             Ward::create(['district_id' => $district_id,'name' => "Buhemba"]);
             Ward::create(['district_id' => $district_id,'name' => "Bukabwa"]);
@@ -1880,7 +1885,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 12,'name' => "Musoma Rural",'capital' => "Musoma",'area' => '','population' => '178,356']);
 
             // Musoma Rural Wards:
-            $district_id = 60;
+            $district_id = 68;
             Ward::create(['district_id' => $district_id,'name' => "Bugwema"]);
             Ward::create(['district_id' => $district_id,'name' => "Bukima"]);
             Ward::create(['district_id' => $district_id,'name' => "Bukumi"]);
@@ -1900,7 +1905,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 12,'name' => "Musoma Urban",'capital' => "Musoma",'area' => '','population' => '134,327']);
 
             // Musoma Urban Wards:
-            $district_id = 61;
+            $district_id = 69;
             Ward::create(['district_id' => $district_id,'name' => "Buhare"]);
             Ward::create(['district_id' => $district_id,'name' => "Bweri"]);
             Ward::create(['district_id' => $district_id,'name' => "Iringo"]);
@@ -1919,7 +1924,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 12,'name' => "Rorya",'capital' => "Rorya",'area' => '','population' => '265,241']);
 
             // Rorya Wards:
-            $district_id = 62;
+            $district_id = 70;
             Ward::create(['district_id' => $district_id,'name' => "Kigunga"]);
             Ward::create(['district_id' => $district_id,'name' => "Kirogo"]);
             Ward::create(['district_id' => $district_id,'name' => "Nyamtinga"]);
@@ -1948,7 +1953,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 12,'name' => "Serengeti",'capital' => "Serengeti",'area' => '','population' => '249,420']);
 
             // Serengeti Wards:
-            $district_id = 63;
+            $district_id = 71;
             Ward::create(['district_id' => $district_id,'name' => "Busawe"]);
             Ward::create(['district_id' => $district_id,'name' => "Geitasamo"]);
             Ward::create(['district_id' => $district_id,'name' => "Ikoma"]);
@@ -1982,7 +1987,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 12,'name' => "Tarime",'capital' => "Tarime",'area' => '','population' => '339,693']);
 
             // Tarime Wards:
-            $district_id = 63;
+            $district_id = 72;
             Ward::create(['district_id' => $district_id,'name' => "Binagi"]);
             Ward::create(['district_id' => $district_id,'name' => "Bomani"]);
             Ward::create(['district_id' => $district_id,'name' => "Bumera"]);
@@ -2030,7 +2035,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 13,'name' => "Chunya",'capital' => "Chunya",'area' => '','population' => '290,478']);
 
             // Chunya Wards:
-            $district_id = 64;
+            $district_id = 73;
             Ward::create(['district_id' => $district_id,'name' => "Chalangwa"]);
             Ward::create(['district_id' => $district_id,'name' => "Chokaa"]);
             Ward::create(['district_id' => $district_id,'name' => "Ifumbo"]);
@@ -2059,7 +2064,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 13,'name' => "Ileje",'capital' => "Ileje",'area' => '','population' => '124,451']);
 
             // Ileje Wards:
-            $district_id = 65;
+            $district_id = 74;
             Ward::create(['district_id' => $district_id,'name' => "Bupigu"]);
             Ward::create(['district_id' => $district_id,'name' => "Chitete"]);
             Ward::create(['district_id' => $district_id,'name' => "Ibaba"]);
@@ -2081,7 +2086,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 13,'name' => "Kyela",'capital' => "Kyela",'area' => '','population' => '221,490']);
 
             // Kyela Wards:
-            $district_id = 66;
+            $district_id = 75;
             Ward::create(['district_id' => $district_id,'name' => "Bujonde"]);
             Ward::create(['district_id' => $district_id,'name' => "Busale"]);
             Ward::create(['district_id' => $district_id,'name' => "Ikama"]);
@@ -2103,7 +2108,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 13,'name' => "Mbarali",'capital' => "Mbarali",'area' => '','population' => '300,517']);
 
             // Mbarali Wards:
-            $district_id = 67;
+            $district_id = 74;
             Ward::create(['district_id' => $district_id,'name' => "Chimala"]);
             Ward::create(['district_id' => $district_id,'name' => "Itamboleo"]);
             Ward::create(['district_id' => $district_id,'name' => "Igava"]);
@@ -2129,7 +2134,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 13,'name' => "Mbeya",'capital' => "Mbeya",'area' => '','population' => '690,598']);
 
             // Mbeya Wards:
-            $district_id = 68;
+            $district_id = 77;
             Ward::create(['district_id' => $district_id,'name' => "Forest"]);
             Ward::create(['district_id' => $district_id,'name' => "Ghana"]);
             Ward::create(['district_id' => $district_id,'name' => "Iduda"]);
@@ -2171,7 +2176,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 13,'name' => "Mbozi",'capital' => "Mbozi",'area' => '','population' => '446,339']);
 
             // Mbozi Wards:
-            $district_id = 69;
+            $district_id = 78;
             Ward::create(['district_id' => $district_id,'name' => "Chilulumo"]);
             Ward::create(['district_id' => $district_id,'name' => "Chitete"]);
             Ward::create(['district_id' => $district_id,'name' => "Chiwezi"]);
@@ -2202,14 +2207,14 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 13,'name' => "Momba",'capital' => "Momba",'area' => '','population' => '294,380']);
 
             // Momba Wards:
-            // $district_id = 0;
+            $district_id = 79;
             // Ward::create(['district_id' => $district_id,'name' => ""]);
 
         // Rungwe - District
         District::create(['region_id' => 13,'name' => "Rungwe",'capital' => "Rungwe",'area' => '','population' => '339,157']);
 
             // Rungwe Wards:
-            $district_id = 70;
+            $district_id = 80;
             Ward::create(['district_id' => $district_id,'name' => "Bagamoyo Ward"]);
             Ward::create(['district_id' => $district_id,'name' => "Bujela"]);
             Ward::create(['district_id' => $district_id,'name' => "Bulyaga"]);
@@ -2257,7 +2262,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 14,'name' => "Gairo",'capital' => "Gairo",'area' => '','population' => '193,011']);
 
             // Gairo Wards:
-            $district_id = 71;
+            $district_id = 81;
             Ward::create(['district_id' => $district_id,'name' => "Gairo"]);
             Ward::create(['district_id' => $district_id,'name' => "Mandege"]);
             Ward::create(['district_id' => $district_id,'name' => "Rubeho"]);
@@ -2271,7 +2276,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 14,'name' => "Kilombero",'capital' => "Kilombero",'area' => '','population' => '407,880']);
 
             // Kilombero Wards:
-            $district_id = 72;
+            $district_id = 82;
             Ward::create(['district_id' => $district_id,'name' => "Chisano"]);
             Ward::create(['district_id' => $district_id,'name' => "Chita"]);
             Ward::create(['district_id' => $district_id,'name' => "Idete"]);
@@ -2312,7 +2317,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 14,'name' => "Kilosa",'capital' => "Kilosa",'area' => '','population' => '438,175']);
 
             // Kilosa Wards:
-            $district_id = 73;
+            $district_id = 83;
             Ward::create(['district_id' => $district_id,'name' => "Berega"]);
             Ward::create(['district_id' => $district_id,'name' => "Chanzuru"]);
             Ward::create(['district_id' => $district_id,'name' => "Dumila"]);
@@ -2348,7 +2353,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 14,'name' => "Morogoro",'capital' => "Morogoro",'area' => '','population' => '602,114']);
 
             // Morogoro Wards:
-            $district_id = 74;
+            $district_id = 84;
             Ward::create(['district_id' => $district_id,'name' => "Bigwa"]);
             Ward::create(['district_id' => $district_id,'name' => "Boma"]);
             Ward::create(['district_id' => $district_id,'name' => "Kichangani"]);
@@ -2375,7 +2380,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 14,'name' => "Mvomero",'capital' => "Mvomero",'area' => '','population' => '312,109']);
 
             // Mvomero Wards:
-            $district_id = 75;
+            $district_id = 85;
             Ward::create(['district_id' => $district_id,'name' => "Bunduki"]);
             Ward::create(['district_id' => $district_id,'name' => "Luale"]);
             Ward::create(['district_id' => $district_id,'name' => "Diongoya"]);
@@ -2410,7 +2415,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 14,'name' => "Ulanga",'capital' => "Ulanga",'area' => '','population' => '265,203']);
 
             // Ulanga Wards:
-            $district_id = 76;
+            $district_id = 86;
             Ward::create(['district_id' => $district_id,'name' => "Chirombola"]);
             Ward::create(['district_id' => $district_id,'name' => "Euga"]);
             Ward::create(['district_id' => $district_id,'name' => "Ilonga"]);
@@ -2449,7 +2454,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 15,'name' => "Masasi",'capital' => "Masasi",'area' => '','population' => '350,689']);
 
             // Masasi Wards:
-            $district_id = 77;
+            $district_id = 87;
             Ward::create(['district_id' => $district_id,'name' => "Chigugu"]);
             Ward::create(['district_id' => $district_id,'name' => "Chiungutwa"]);
             Ward::create(['district_id' => $district_id,'name' => "Lipumburu"]);
@@ -2473,7 +2478,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 15,'name' => "Mtwara",'capital' => "Mtwara",'area' => '','population' => '336,302']);
 
             // Mtwara Wards:
-            $district_id = 78;
+            $district_id = 88;
             Ward::create(['district_id' => $district_id,'name' => "Chikongola"]);
             Ward::create(['district_id' => $district_id,'name' => "Chuno"]);
             Ward::create(['district_id' => $district_id,'name' => "Likombe"]);
@@ -2494,14 +2499,14 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 15,'name' => "Nanyumbu",'capital' => "Nanyumbu",'area' => '','population' => '150,087']);
 
             // Nanyumbu Wards:
-            // $district_id = 0;
+            $district_id = 89;
             // Ward::create(['district_id' => $district_id,'name' => ""]);
         
         // Newala - District
         District::create(['region_id' => 15,'name' => "Newala",'capital' => "Newala",'area' => '','population' => '205,492']);
 
             // Newala Wards:
-            $district_id = 79;
+            $district_id = 90;
             Ward::create(['district_id' => $district_id,'name' => "Chilangala"]);
             Ward::create(['district_id' => $district_id,'name' => "Chitekete"]);
             Ward::create(['district_id' => $district_id,'name' => "Chiwonga"]);
@@ -2527,7 +2532,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 15,'name' => "Tandahimba",'capital' => "Tandahimba",'area' => '','population' => '227,514']);
 
             // Tandahimba Wards:
-            $district_id = 80;
+            $district_id = 91;
             Ward::create(['district_id' => $district_id,'name' => "Chaume"]);
             Ward::create(['district_id' => $district_id,'name' => "Chigunge"]);
             Ward::create(['district_id' => $district_id,'name' => "Kitama"]);
@@ -2567,7 +2572,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 16,'name' => "Ilemela",'capital' => "Ilemela",'area' => '','population' => '343,001']);
 
             // Ilemela Wards:
-            $district_id = 81;
+            $district_id = 92;
             Ward::create(['district_id' => $district_id,'name' => "Bugogwa"]);
             Ward::create(['district_id' => $district_id,'name' => "Buswelu"]);
             Ward::create(['district_id' => $district_id,'name' => "Buzuruga"]);
@@ -2592,7 +2597,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 16,'name' => "Kwimba",'capital' => "Kwimba",'area' => '','population' => '406,509']);
 
             // Kwimba Wards:
-            $district_id = 82;
+            $district_id = 93;
             Ward::create(['district_id' => $district_id,'name' => "Bugando"]);
             Ward::create(['district_id' => $district_id,'name' => "Bungulwa"]);
             Ward::create(['district_id' => $district_id,'name' => "Bupamwa"]);
@@ -2628,7 +2633,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 16,'name' => "Magu",'capital' => "Magu",'area' => '','population' => '299,759']);
 
             // Magu Wards:
-            $district_id = 83;
+            $district_id = 94;
             Ward::create(['district_id' => $district_id,'name' => "Badugu"]);
             Ward::create(['district_id' => $district_id,'name' => "Bujashi"]);
             Ward::create(['district_id' => $district_id,'name' => "Igalukilo"]);
@@ -2664,7 +2669,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 16,'name' => "Misungwi",'capital' => "Misungwi",'area' => '','population' => '351,607']);
 
             // Misungwi Wards:
-            $district_id = 84;
+            $district_id = 95;
             Ward::create(['district_id' => $district_id,'name' => "Buhingo"]);
             Ward::create(['district_id' => $district_id,'name' => "Bulemeji"]);
             Ward::create(['district_id' => $district_id,'name' => "Busongo"]);
@@ -2697,7 +2702,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 16,'name' => "Nyamagana",'capital' => "Nyamagana",'area' => '','population' => '363,452']);
 
             // Nyamagana Wards:
-            $district_id = 85;
+            $district_id = 96;
             Ward::create(['district_id' => $district_id,'name' => "Buhongwa"]);
             Ward::create(['district_id' => $district_id,'name' => "Butimba"]);
             Ward::create(['district_id' => $district_id,'name' => "Igogo"]);
@@ -2715,7 +2720,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 16,'name' => "Sengerema",'capital' => "Sengerema",'area' => '','population' => '663,034']);
 
             // Sengerema Wards:
-            $district_id = 86;
+            $district_id = 97;
             Ward::create(['district_id' => $district_id,'name' => "Bulyaheke"]);
             Ward::create(['district_id' => $district_id,'name' => "Bupandwa"]);
             Ward::create(['district_id' => $district_id,'name' => "Busisi"]);
@@ -2755,7 +2760,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 16,'name' => "Ukerewe",'capital' => "Ukerewe",'area' => '','population' => '345,147']);
 
             // Ukerewe Wards:
-            $district_id = 87;
+            $district_id = 98;
             Ward::create(['district_id' => $district_id,'name' => "Bukanda"]);
             Ward::create(['district_id' => $district_id,'name' => "Bukiko"]);
             Ward::create(['district_id' => $district_id,'name' => "Bukindo"]);
@@ -2800,7 +2805,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 17,'name' => "Ludewa",'capital' => "Ludewa",'area' => '','population' => '133,218']);
 
             // Ludewa Wards:
-            $district_id = 88;
+            $district_id = 99;
             Ward::create(['district_id' => $district_id,'name' => "Ibumi"]);
             Ward::create(['district_id' => $district_id,'name' => "Iwela"]);
             Ward::create(['district_id' => $district_id,'name' => "Kilondo"]);
@@ -2832,7 +2837,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 17,'name' => "Makambako Town",'capital' => "Makambako",'area' => '','population' => '93,827']);
 
             // Makambako Town Wards:
-            $district_id = 89;
+            $district_id = 100;
             Ward::create(['district_id' => $district_id,'name' => "Kitandililo"]);
             Ward::create(['district_id' => $district_id,'name' => "Lyamkena"]);
             Ward::create(['district_id' => $district_id,'name' => "Mahongole"]);
@@ -2846,7 +2851,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 17,'name' => "Makete",'capital' => "Makete",'area' => '','population' => '97,266']);
 
             // Makete Wards:
-            $district_id = 90;
+            $district_id = 101;
             Ward::create(['district_id' => $district_id,'name' => "Bulongwa"]);
             Ward::create(['district_id' => $district_id,'name' => "Ikuwo"]);
             Ward::create(['district_id' => $district_id,'name' => "Iniho"]);
@@ -2874,7 +2879,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 17,'name' => "Njombe Rural",'capital' => "Njombe Rural",'area' => '','population' => '85,747']);
 
             // Njombe Rural Wards:
-            $district_id = 91;
+            $district_id = 102;
             Ward::create(['district_id' => $district_id,'name' => "Idamba"]);
             Ward::create(['district_id' => $district_id,'name' => "Igongolo"]);
             Ward::create(['district_id' => $district_id,'name' => "Ikondo"]);
@@ -2894,7 +2899,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 17,'name' => "Njombe Urban",'capital' => "Njombe Urban",'area' => '','population' => '130,223']);
 
             // Njombe Urban Wards:
-            $district_id = 92;
+            $district_id = 103;
             Ward::create(['district_id' => $district_id,'name' => "Ihanga"]);
             Ward::create(['district_id' => $district_id,'name' => "Iwungilo"]);
             Ward::create(['district_id' => $district_id,'name' => "Kifanya"]);
@@ -2917,7 +2922,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 17,'name' => "Wanging'ombe",'capital' => "Wanging'ombe",'area' => '','population' => '161,816']);
 
             // Wanging'ombe Wards:
-            $district_id = 93;
+            $district_id = 104;
             Ward::create(['district_id' => $district_id,'name' => "Igima"]);
             Ward::create(['district_id' => $district_id,'name' => "Igosi"]);
             Ward::create(['district_id' => $district_id,'name' => "Ilembula"]);
@@ -2951,7 +2956,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 18,'name' => "Micheweni",'capital' => "Micheweni",'area' => '','population' => '103,816']);
 
             // Micheweni Wards:
-            $district_id = 94;
+            $district_id = 105;
             Ward::create(['district_id' => $district_id,'name' => "Kinowe"]);
             Ward::create(['district_id' => $district_id,'name' => "Kiuyu Maziwa Ng'ombe"]);
             Ward::create(['district_id' => $district_id,'name' => "Konde"]);
@@ -2967,7 +2972,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 18,'name' => "Wete",'capital' => "Wete",'area' => '','population' => '107,916']);
 
             // Wete Wards:
-            $district_id = 95;
+            $district_id = 106;
             Ward::create(['district_id' => $district_id,'name' => "Bopwe"]);
             Ward::create(['district_id' => $district_id,'name' => "Fundo"]);
             Ward::create(['district_id' => $district_id,'name' => "Gando"]);
@@ -3002,14 +3007,14 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 19,'name' => "Chake Chake",'capital' => "Chake Chake",'area' => '','population' => '97,249']);
 
             // Chake Chake Wards:
-            // $district_id = 00;
+            $district_id = 107;
             // Ward::create(['district_id' => $district_id,'name' => ""]);
         
         // Mkoani - District
         District::create(['region_id' => 19,'name' => "Mkoani",'capital' => "Mkoani",'area' => '','population' => '97,867']);
 
             // Mkoani Wards:
-            // $district_id = 00;
+            $district_id = 108;
             // Ward::create(['district_id' => $district_id,'name' => ""])
 
         // Pwani Region
@@ -3028,7 +3033,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 20,'name' => "Bagamoyo",'capital' => "Bagamoyo",'area' => '','population' => '311,740']);
 
             // Bagamoyo Wards:
-            $district_id = 96;
+            $district_id = 109;
             Ward::create(['district_id' => $district_id,'name' => "Bago"]);
             Ward::create(['district_id' => $district_id,'name' => "Chalinze"]);
             Ward::create(['district_id' => $district_id,'name' => "Chasimba"]);
@@ -3051,7 +3056,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 20,'name' => "Kibaha",'capital' => "Kibaha",'area' => '','population' => '198,697']);
 
             // Kibaha Wards:
-            $district_id = 97;
+            $district_id = 110;
             Ward::create(['district_id' => $district_id,'name' => "Kibaha"]);
             Ward::create(['district_id' => $district_id,'name' => "Kwala"]);
             Ward::create(['district_id' => $district_id,'name' => "Magindu"]);
@@ -3066,7 +3071,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 20,'name' => "Kisarawe",'capital' => "Kisarawe",'area' => '','population' => '101,598']);
 
             // Kisarawe Wards:
-            $district_id = 98;
+            $district_id = 111;
             Ward::create(['district_id' => $district_id,'name' => "Cholesamvula"]);
             Ward::create(['district_id' => $district_id,'name' => "Kibuta"]);
             Ward::create(['district_id' => $district_id,'name' => "Kiluvya"]);
@@ -3088,7 +3093,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 20,'name' => "Mafia",'capital' => "Mafia",'area' => '','population' => '46,438']);
 
             // Mafia Wards:
-            $district_id = 99;
+            $district_id = 112;
             Ward::create(['district_id' => $district_id,'name' => "Baleni"]);
             Ward::create(['district_id' => $district_id,'name' => "Jibondo"]);
             Ward::create(['district_id' => $district_id,'name' => "Kanga"]);
@@ -3102,7 +3107,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 20,'name' => "Mkuranga",'capital' => "Mkuranga",'area' => '','population' => '222,921']);
 
             // Mkuranga Wards:
-            $district_id = 100;
+            $district_id = 113;
             Ward::create(['district_id' => $district_id,'name' => "Bupu"]);
             Ward::create(['district_id' => $district_id,'name' => "Kimanzichana"]);
             Ward::create(['district_id' => $district_id,'name' => "Kisiju"]);
@@ -3126,7 +3131,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 20,'name' => "Rufiji",'capital' => "Rufiji",'area' => '','population' => '217,274']);
 
             // Rufiji Wards:
-            $district_id = 101;
+            $district_id = 114;
             Ward::create(['district_id' => $district_id,'name' => "Bungu"]);
             Ward::create(['district_id' => $district_id,'name' => "Chumbi"]);
             Ward::create(['district_id' => $district_id,'name' => "Ikwiriri"]);
@@ -3163,7 +3168,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 21,'name' => "Kalambo",'capital' => "Matai",'area' => '','population' => '207,700']);
 
             // Kalambo Wards:
-            $district_id = 102;
+            $district_id = 115;
             Ward::create(['district_id' => $district_id,'name' => "Kalambazite"]);
             Ward::create(['district_id' => $district_id,'name' => "Kasanga"]);
             Ward::create(['district_id' => $district_id,'name' => "Katazi"]);
@@ -3186,14 +3191,14 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 21,'name' => "Lyamba lya Mfipa",'capital' => "Mtowisa",'area' => '','population' => '162,557']);
 
             // Lyamba lay Mfipa Wards:
-            // $district_id = 0;
+            $district_id = 116;
             // Ward::create(['district_id' => $district_id,'name' => ""]);
 
         // Nkasi - District
         District::create(['region_id' => 21,'name' => "Nkasi",'capital' => "Namanyere",'area' => '','population' => '281,200']);
 
             // Nkasi Wards:
-            $district_id = 103;
+            $district_id = 117;
             Ward::create(['district_id' => $district_id,'name' => "Chala"]);
             Ward::create(['district_id' => $district_id,'name' => "Isale"]);
             Ward::create(['district_id' => $district_id,'name' => "Kabwe"]);
@@ -3216,7 +3221,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 21,'name' => "Sumbawanga",'capital' => "Sumbawanga",'area' => '','population' => '353,082']);
 
             // Sumbawanga Wards:
-            $district_id = 104;
+            $district_id = 118;
             Ward::create(['district_id' => $district_id,'name' => "Izia"]);
             Ward::create(['district_id' => $district_id,'name' => "Kasense"]);
             Ward::create(['district_id' => $district_id,'name' => "Katandala"]);
@@ -3247,7 +3252,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 22,'name' => "Mbinga",'capital' => "Mbinga",'area' => '','population' => '353,683']);
 
             // Mbinga Wards:
-            $district_id = 105;
+            $district_id = 119;
             Ward::create(['district_id' => $district_id,'name' => "Chiwanda"]);
             Ward::create(['district_id' => $district_id,'name' => "Kigonsera"]);
             Ward::create(['district_id' => $district_id,'name' => "Kihagara"]);
@@ -3290,7 +3295,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 22,'name' => "Namtumbo",'capital' => "Namtumbo",'area' => '','population' => '201,639']);
 
             // Namtumbo Wards:
-            $district_id = 106;
+            $district_id = 120;
             Ward::create(['district_id' => $district_id,'name' => "Kitanda"]);
             Ward::create(['district_id' => $district_id,'name' => "Ligera"]);
             Ward::create(['district_id' => $district_id,'name' => "Luchili"]);
@@ -3317,14 +3322,14 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 22,'name' => "Nyasa",'capital' => "Nyasa",'area' => '','population' => '146,160']);
 
         // Nyasa Wards:
-        // $district_id = 0;
+        $district_id = 121;
         // Ward::create(['district_id' => $district_id,'name' => ""]);
 
         // Songea - District
         District::create(['region_id' => 22,'name' => "Songea",'capital' => "Songea",'area' => '','population' => '377,130']);
 
             // Songea Wards:
-            $district_id = 107;
+            $district_id = 122;
             Ward::create(['district_id' => $district_id,'name' => "Bomba Mbili"]);
             Ward::create(['district_id' => $district_id,'name' => "Lizaboni"]);
             Ward::create(['district_id' => $district_id,'name' => "Majengo"]);
@@ -3343,7 +3348,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 22,'name' => "Tunduru",'capital' => "Tunduru",'area' => '','population' => '298,279']);
 
             // Tunduru Wards:
-            $district_id = 108;
+            $district_id = 123;
             Ward::create(['district_id' => $district_id,'name' => "Kalulu"]);
             Ward::create(['district_id' => $district_id,'name' => "Kidodoma"]);
             Ward::create(['district_id' => $district_id,'name' => "Ligoma"]);
@@ -3385,7 +3390,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 23,'name' => "Kahama Rural",'capital' => "Kamara",'area' => '','population' => '523,802']);
 
             // Kahama Rural Wards:
-            $district_id = 109;
+            $district_id = 124;
             Ward::create(['district_id' => $district_id,'name' => "Bugarama"]);
             Ward::create(['district_id' => $district_id,'name' => "Bukomela"]);
             Ward::create(['district_id' => $district_id,'name' => "Bulige"]);
@@ -3426,7 +3431,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 23,'name' => "Kahama Urban",'capital' => "Kamara",'area' => '','population' => '242,208']);
 
             // Kahama Urban Wards:
-            $district_id = 110;
+            $district_id = 125;
             Ward::create(['district_id' => $district_id,'name' => "Busoka"]);
             Ward::create(['district_id' => $district_id,'name' => "Isagehe"]);
             Ward::create(['district_id' => $district_id,'name' => "Iyenze"]);
@@ -3452,7 +3457,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 23,'name' => "Kishapu",'capital' => "Kishapu",'area' => '','population' => '272,990']);
 
             // Kishapu Wards:
-            $district_id = 111;
+            $district_id = 126;
             Ward::create(['district_id' => $district_id,'name' => "Bubiki"]);
             Ward::create(['district_id' => $district_id,'name' => "Bunambiyu"]);
             Ward::create(['district_id' => $district_id,'name' => "Itilima"]);
@@ -3477,7 +3482,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 23,'name' => "Shinyanga Rural",'capital' => "Shinyanga",'area' => '','population' => '334,417']);
 
             // Shinyanga Rural Wards:
-            $district_id = 112;
+            $district_id = 127;
             Ward::create(['district_id' => $district_id,'name' => "Didia"]);
             Ward::create(['district_id' => $district_id,'name' => "Ilola"]);
             Ward::create(['district_id' => $district_id,'name' => "Imesela"]);
@@ -3499,7 +3504,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 23,'name' => "Shinyanga Urban",'capital' => "Shinyanga",'area' => '','population' => '161,391']);
 
             // Shinyanga Urban Wards:
-            $district_id = 113;
+            $district_id = 128;
             Ward::create(['district_id' => $district_id,'name' => "Chamaguha"]);
             Ward::create(['district_id' => $district_id,'name' => "Chibe"]);
             Ward::create(['district_id' => $district_id,'name' => "Ibadakuli"]);
@@ -3530,7 +3535,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 24,'name' => "Bariadi",'capital' => "Bariadi",'area' => '','population' => '422,916']);
 
             // Bariadi Wards:
-            $district_id = 114;
+            $district_id = 129;
             Ward::create(['district_id' => $district_id,'name' => "Bariadi"]);
             Ward::create(['district_id' => $district_id,'name' => "Bumera"]);
             Ward::create(['district_id' => $district_id,'name' => "Bunamhala"]);
@@ -3562,7 +3567,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 24,'name' => "Busega",'capital' => "Busega",'area' => '','population' => '203,597']);
 
             // Busega Wards:
-            $district_id = 115;
+            $district_id = 130;
             Ward::create(['district_id' => $district_id,'name' => "Badugu"]);
             Ward::create(['district_id' => $district_id,'name' => "Igalukilo"]);
             Ward::create(['district_id' => $district_id,'name' => "Kabita"]);
@@ -3581,7 +3586,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 24,'name' => "Itilima",'capital' => "Itilima",'area' => '','population' => '313,900']);
 
             // Itilima Wards:
-            $district_id = 116;
+            $district_id = 131;
             Ward::create(['district_id' => $district_id,'name' => "Bundalabujiga"]);
             Ward::create(['district_id' => $district_id,'name' => "Bumera"]);
             Ward::create(['district_id' => $district_id,'name' => "Chinamili"]);
@@ -3609,7 +3614,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 24,'name' => "Maswa",'capital' => "Maswa",'area' => '','population' => '344,619']);
 
             // Maswa Wards:
-            $district_id = 117;
+            $district_id = 132;
             Ward::create(['district_id' => $district_id,'name' => "Badi"]);
             Ward::create(['district_id' => $district_id,'name' => "Binza"]);
             Ward::create(['district_id' => $district_id,'name' => "Buchambi"]);
@@ -3641,7 +3646,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 24,'name' => "Meatu",'capital' => "Meatu",'area' => '','population' => '299,619']);
 
             // Meatu Wards:
-            $district_id = 118;
+            $district_id = 133;
             Ward::create(['district_id' => $district_id,'name' => "Bukundi"]);
             Ward::create(['district_id' => $district_id,'name' => "Imalaseko"]);
             Ward::create(['district_id' => $district_id,'name' => "Itinje"]);
@@ -3684,7 +3689,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 25,'name' => "Iramba",'capital' => "Iramba",'area' => '','population' => '236,282']);
 
             // Iramba Wards:
-            $district_id = 119;
+            $district_id = 134;
             Ward::create(['district_id' => $district_id,'name' => "Urughu"]);
             Ward::create(['district_id' => $district_id,'name' => "Mtekente"]);
             Ward::create(['district_id' => $district_id,'name' => "Mtoa"]);
@@ -3707,7 +3712,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 25,'name' => "Ikungi",'capital' => "Ikungi",'area' => '','population' => '272,959']);
 
             // Ikungi Wards:
-            $district_id = 120;
+            $district_id = 135;
             Ward::create(['district_id' => $district_id,'name' => "Puma"]);
             Ward::create(['district_id' => $district_id,'name' => "Kituntu"]);
             Ward::create(['district_id' => $district_id,'name' => "Mungaa"]);
@@ -3739,7 +3744,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 25,'name' => "Manyoni",'capital' => "Manyoni",'area' => '','population' => '296,763']);
 
             // Manyoni Wards:
-            $district_id = 121;
+            $district_id = 136;
             Ward::create(['district_id' => $district_id,'name' => "Aghondi"]);
             Ward::create(['district_id' => $district_id,'name' => "Chikola"]);
             Ward::create(['district_id' => $district_id,'name' => "Chikuyu"]);
@@ -3775,7 +3780,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 25,'name' => "Mkalama",'capital' => "Mkalama",'area' => '','population' => '188,733']);
 
             // Mkalama Wards:
-            $district_id = 122;
+            $district_id = 137;
             Ward::create(['district_id' => $district_id,'name' => "Gumanga"]);
             Ward::create(['district_id' => $district_id,'name' => "Ibaga"]);
             Ward::create(['district_id' => $district_id,'name' => "Iguguno"]);
@@ -3795,7 +3800,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 25,'name' => "Singida Rural",'capital' => "Singida",'area' => '','population' => '225,521']);
 
             // Singida Rural Wards:
-            $district_id = 123;
+            $district_id = 138;
             Ward::create(['district_id' => $district_id,'name' => "Ikhanoda"]);
             Ward::create(['district_id' => $district_id,'name' => "Ilongero"]);
             Ward::create(['district_id' => $district_id,'name' => "Itaja"]);
@@ -3822,7 +3827,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 25,'name' => "Singida Rural",'capital' => "Singida",'area' => '','population' => '150,379']);
 
             // Singida Urban Wards:
-            $district_id = 124;
+            $district_id = 139;
             Ward::create(['district_id' => $district_id,'name' => "Ipembe"]);
             Ward::create(['district_id' => $district_id,'name' => "Kindai"]);
             Ward::create(['district_id' => $district_id,'name' => "Majengo"]);
@@ -3841,18 +3846,6 @@ class TopologySeeder extends Seeder
             Ward::create(['district_id' => $district_id,'name' => "Unyamikumbi"]);
             Ward::create(['district_id' => $district_id,'name' => "Utemini"]);
 
-        // Songwe Region
-        Region::create([
-            'name' => "Songwe",
-            'capital' => "Vwawa",
-            'districts' => 5,
-            'keycode' => "26",
-            'area' => "27,656 Km Square",
-            'population' => '',
-            'postcode' => '',
-            'zone' => 'Southern Highlands'
-        ]);
-
         // Tabora Region
         Region::create([
             'name' => "Tabora",
@@ -3869,7 +3862,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 26,'name' => "Igunga",'capital' => "Igunga",'area' => '','population' => '399,727']);
 
             // Igunga Wards:
-            $district_id = 125;
+            $district_id = 140;
             Ward::create(['district_id' => $district_id,'name' => "Igunga"]);
             Ward::create(['district_id' => $district_id,'name' => "Bukoko"]);
             Ward::create(['district_id' => $district_id,'name' => "Mtunguru"]);
@@ -3909,7 +3902,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 26,'name' => "Kaliua",'capital' => "Kaliua",'area' => '','population' => '393,358']);
 
             // Kaliua Wards:
-            $district_id = 126;
+            $district_id = 141;
             Ward::create(['district_id' => $district_id,'name' => "Ichemba"]);
             Ward::create(['district_id' => $district_id,'name' => "Igagala"]);
             Ward::create(['district_id' => $district_id,'name' => "IgombeMkulu"]);
@@ -3943,7 +3936,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 26,'name' => "Nzega",'capital' => "Nzega",'area' => '','population' => '502,252']);
 
             // Nzega Wards:
-            $district_id = 127;
+            $district_id = 142;
             Ward::create(['district_id' => $district_id,'name' => "Budushi"]);
             Ward::create(['district_id' => $district_id,'name' => "Bukene"]);
             Ward::create(['district_id' => $district_id,'name' => "Igusule"]);
@@ -3985,7 +3978,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 26,'name' => "Sikonge",'capital' => "Sikonge",'area' => '','population' => '179,883']);
 
             // Sikonge Wards:
-            $district_id = 128;
+            $district_id = 143;
             Ward::create(['district_id' => $district_id,'name' => "Chabutwa"]);
             Ward::create(['district_id' => $district_id,'name' => "Igigwa"]);
             Ward::create(['district_id' => $district_id,'name' => "Ipole"]);
@@ -4007,7 +4000,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 26,'name' => "Tabora Urban",'capital' => "Tabora",'area' => '','population' => '226,999']);
 
             // Tabora Urban Wards:
-            $district_id = 129;
+            $district_id = 144;
             Ward::create(['district_id' => $district_id,'name' => "Chemchem"]);
             Ward::create(['district_id' => $district_id,'name' => "Cheyo"]);
             Ward::create(['district_id' => $district_id,'name' => "Gongoni"]);
@@ -4038,7 +4031,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 26,'name' => "Urambo",'capital' => "Urambo",'area' => '','population' => '192,781']);
 
             // Urambo Wards:
-            $district_id = 130;
+            $district_id = 145;
             Ward::create(['district_id' => $district_id,'name' => "Imalamakoye"]);
             Ward::create(['district_id' => $district_id,'name' => "Kapilula"]);
             Ward::create(['district_id' => $district_id,'name' => "Kasisi"]);
@@ -4060,7 +4053,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 26,'name' => "Uyui",'capital' => "Uyui",'area' => '','population' => '396,623']);
 
             // Uyui Wards:
-            $district_id = 131;
+            $district_id = 146;
             Ward::create(['district_id' => $district_id,'name' => "Bukumbi"]);
             Ward::create(['district_id' => $district_id,'name' => "Goweko"]);
             Ward::create(['district_id' => $district_id,'name' => "Ibelamilundi"]);
@@ -4102,14 +4095,14 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 26,'name' => "Handeni",'capital' => "Handeni",'area' => '','population' => '355,702']);
 
             // Handeni Wards:
-            // $district_id = 0;
+            $district_id = 147;
             // Ward::create(['district_id' => $district_id,'name' => ""]);
         
         // Kilindi - District
         District::create(['region_id' => 26,'name' => "Kilindi",'capital' => "Kilindi",'area' => '','population' => '236,833']);
 
             // Kilindi Wards:
-            $district_id = 132;
+            $district_id = 148;
             Ward::create(['district_id' => $district_id,'name' => "Jaila"]);
             Ward::create(['district_id' => $district_id,'name' => "Kikunde"]);
             Ward::create(['district_id' => $district_id,'name' => "Kilindi"]);
@@ -4131,7 +4124,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 26,'name' => "Korogwe",'capital' => "Korogwe",'area' => '','population' => '310,346']);
 
             // Korogwe Wards:
-            $district_id = 133;
+            $district_id = 149;
             Ward::create(['district_id' => $district_id,'name' => "Bungu"]);
             Ward::create(['district_id' => $district_id,'name' => "Chekelei"]);
             Ward::create(['district_id' => $district_id,'name' => "Dindira"]);
@@ -4157,7 +4150,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 26,'name' => "Lushoto",'capital' => "Lushoto",'area' => '','population' => '492,441']);
 
             // Lushoto Wards:
-            $district_id = 134;
+            $district_id = 150;
             Ward::create(['district_id' => $district_id,'name' => "Bagha"]);
             Ward::create(['district_id' => $district_id,'name' => "Bumbuli"]);
             Ward::create(['district_id' => $district_id,'name' => "Funa"]);
@@ -4199,7 +4192,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 26,'name' => "Muheza",'capital' => "Muheza",'area' => '','population' => '204,461']);
 
             // Muheza Wards:
-            $district_id = 135;
+            $district_id = 151;
             Ward::create(['district_id' => $district_id,'name' => "Bwembwera"]);
             Ward::create(['district_id' => $district_id,'name' => "Daluni"]);
             Ward::create(['district_id' => $district_id,'name' => "Duga"]);
@@ -4242,14 +4235,14 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 26,'name' => "Mkinga",'capital' => "Mkinga",'area' => '','population' => '118,065']);
 
             // Mkinga Wards:
-            // $district_id = 0;
+            $district_id = 152;
             // Ward::create(['district_id' => $district_id,'name' => ""]);
 
         // Pangani - District
         District::create(['region_id' => 26,'name' => "Pangani",'capital' => "Pangani",'area' => '','population' => '54,025']);
 
             // Pangani Wards:
-            $district_id = 136;
+            $district_id = 153;
             Ward::create(['district_id' => $district_id,'name' => "Bushiri"]);
             Ward::create(['district_id' => $district_id,'name' => "Bweni"]);
             Ward::create(['district_id' => $district_id,'name' => "Kimang'a"]);
@@ -4269,7 +4262,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 26,'name' => "Tanga",'capital' => "Tanga",'area' => '','population' => '273,332']);
 
             // Tanga Wards:
-            // $district_id = 0;
+            $district_id = 154;
             // Ward::create(['district_id' => $district_id,'name' => ""]);
 
         // Zanzibar Kaskazini Region
@@ -4288,7 +4281,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 27,'name' => "Kaskazini A",'capital' => "Kaskazini A",'area' => '','population' => '84,348']);
 
             // Kaskazini A Wards:
-            $district_id = 137;
+            $district_id = 155;
             Ward::create(['district_id' => $district_id,'name' => "Bandamaji"]);
             Ward::create(['district_id' => $district_id,'name' => "Chaani Kubwa"]);
             Ward::create(['district_id' => $district_id,'name' => "Chaani Masingini"]);
@@ -4322,7 +4315,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 27,'name' => "Kaskazini B",'capital' => "Kaskazini B",'area' => '','population' => '84,348']);
 
             // Kaskazini B Wards:
-            $district_id = 138;
+            $district_id = 156;
             Ward::create(['district_id' => $district_id,'name' => "Done Mchagani"]);
             Ward::create(['district_id' => $district_id,'name' => "Donge Karange"]);
             Ward::create(['district_id' => $district_id,'name' => "Donge Kipange"]);
@@ -4364,14 +4357,14 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 28,'name' => "Kati",'capital' => "Kati",'area' => '','population' => '76,346']);
 
             // Kati Wards:
-            // $district_id = 0;
+            $district_id = 157;
             // Ward::create(['district_id' => $district_id,'name' => ""]);
 
         // Kusini - District
         District::create(['region_id' => 29,'name' => "Kusini",'capital' => "Kusini",'area' => '','population' => '39,242']);
 
             // Kusini Wards:
-            // $district_id = 0;
+            $district_id = 158;
             // Ward::create(['district_id' => $district_id,'name' => ""]);
 
         // Zanzibar Urban Region
@@ -4390,7 +4383,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 30,'name' => "Magharibi",'capital' => "Magharibi",'area' => '','population' => '370,645']);
 
             // Magharibi Wards:
-            $district_id = 139;
+            $district_id = 159;
             Ward::create(['district_id' => $district_id,'name' => "Mwera"]);
             Ward::create(['district_id' => $district_id,'name' => "Mtoni"]);
             Ward::create(['district_id' => $district_id,'name' => "Bububu"]);
@@ -4425,7 +4418,7 @@ class TopologySeeder extends Seeder
         District::create(['region_id' => 30,'name' => "Zanzibar City",'capital' => "Zanzibar",'area' => '','population' => '370,645']);
 
             // Magharibi Wards:
-            $district_id = 140;
+            $district_id = 160;
             Ward::create(['district_id' => $district_id,'name' => "Shangazi"]);
             Ward::create(['district_id' => $district_id,'name' => "Mkunazini"]);
             Ward::create(['district_id' => $district_id,'name' => "Kiponda"]);
@@ -4466,5 +4459,17 @@ class TopologySeeder extends Seeder
             Ward::create(['district_id' => $district_id,'name' => "Kwahani"]);
             Ward::create(['district_id' => $district_id,'name' => "Kwaalinato"]);
             Ward::create(['district_id' => $district_id,'name' => "Karakana"]);
+
+        // Songwe Region
+        Region::create([
+            'name' => "Songwe",
+            'capital' => "Vwawa",
+            'districts' => 5,
+            'keycode' => "26",
+            'area' => "27,656 Km Square",
+            'population' => '',
+            'postcode' => '',
+            'zone' => 'Southern Highlands'
+        ]);
     }
 }
