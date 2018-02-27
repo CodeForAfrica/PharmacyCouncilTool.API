@@ -100,6 +100,15 @@ Route::group(['middleware' => ['auth:api','cors']], function(){
     Route::post('wards', 'WardController@store');
     Route::put('wards/{ward}', 'WardController@update');
     Route::delete('wards/{ward}', 'WardController@delete');
+
+    //Datatables API route.
+    Route::post('datatables/getpremises', 'DatatablesController@getPremises');
+    Route::post('datatables/getowners', 'DatatablesController@getOwners');
+    Route::post('datatables/getpersonnels', 'DatatablesController@getPersonnels');
+    Route::post('datatables/getdispensers', 'DatatablesController@getDispensers');
+    Route::post('datatables/getusers', 'DatatablesController@getUsers');
+    Route::post('datatables/getattendances', 'DatatablesController@getAttendances');
+    Route::post('datatables/getreports', 'DatatablesController@getReports');
 });
 
 Route::group(['middleware' => 'cors'], function(){

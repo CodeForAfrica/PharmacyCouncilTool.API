@@ -44,8 +44,7 @@ class AttendanceController extends Controller
                             'ward' => $premise->ward,
                             'district' => $premise->district,
                             'region' => $premise->region,
-                            'pharmacist' => ucfirst(strtolower($premise->pharmacist->firstname)) ." ". ucfirst(strtolower($premise->pharmacist->middlename)) ." ". ucfirst(strtolower($premise->pharmacist->surname)),
-                            'owner' => ucfirst(strtolower($premise->owner->firstname)) ." ". ucfirst(strtolower($premise->owner->middlename)) ." ". ucfirst(strtolower($premise->owner->surname))
+                            'pharmacist' => ucfirst(strtolower($premise->pharmacist->firstname)) ." ". ucfirst(strtolower($premise->pharmacist->middlename)) ." ". ucfirst(strtolower($premise->pharmacist->surname))
                         );
                     }
                     else
@@ -114,8 +113,7 @@ class AttendanceController extends Controller
                                 'ward' => $premise->ward,
                                 'district' => $premise->district,
                                 'region' => $premise->region,
-                                'pharmacist' => ucfirst(strtolower($premise->pharmacist->firstname)) ." ". ucfirst(strtolower($premise->pharmacist->middlename)) ." ". ucfirst(strtolower($premise->pharmacist->surname)),
-                                'owner' => ucfirst(strtolower($premise->owner->firstname)) ." ". ucfirst(strtolower($premise->owner->middlename)) ." ". ucfirst(strtolower($premise->owner->surname))
+                                'pharmacist' => ucfirst(strtolower($premise->pharmacist->firstname)) ." ". ucfirst(strtolower($premise->pharmacist->middlename)) ." ". ucfirst(strtolower($premise->pharmacist->surname))
                             );
                         }
                         else
