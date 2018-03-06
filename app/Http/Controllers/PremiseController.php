@@ -162,6 +162,21 @@ class PremiseController extends Controller
         }
     }
 
+    public function onlyPremises(Request $request){
+        $queryBuilder = new QueryBuilder(new Premise, $request);
+
+        $premises = $queryBuilder->build()->get();
+        $status = 0;
+            
+        if($premises && count($premises) > 0) $status = 200;
+        else $status = 404;
+
+        return response()->json([
+            'status' => $status,
+            'premises' => $premises
+        ],200);
+    }
+
     public function show(Premise $premise)      
     {
         $status = "";

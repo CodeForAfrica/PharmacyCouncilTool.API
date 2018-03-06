@@ -41,6 +41,7 @@ Route::group(['middleware' => ['auth:api','cors']], function(){
     // Premises API route.
     Route::post('premises', 'PremiseController@store');
     Route::get('premises', 'PremiseController@index');
+    Route::get('onlypremises', 'PremiseController@onlyPremises');
     Route::get('premises/{premise}', 'PremiseController@show');
     Route::put('premises/{premise}', 'PremiseController@update');
     Route::delete('premises/{premise}', 'PremiseController@delete');
