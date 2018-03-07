@@ -103,18 +103,40 @@ class DatatablesController extends Controller
             }
         }
         else{
-            $premises =  Premise::where('fin','LIKE',"%{$search}%")
-                            ->orWhere('name', 'LIKE',"%{$search}%")
-                            ->orWhere('category', 'LIKE',"%{$search}%")
-                            ->offset($start)
-                            ->limit($limit)
-                            ->orderBy($order,$dir)
-                            ->get();
+            if($status != ""){
+                $premises =  Premise::where('renewal_status','=', $status)
+                                ->where(function($query) use($search){
+                                    $query->where('fin','LIKE',"%{$search}%")
+                                        ->orWhere('name', 'LIKE',"%{$search}%")
+                                        ->orWhere('category', 'LIKE',"%{$search}%");
+                                })
+                                ->offset($start)
+                                ->limit($limit)
+                                ->orderBy($order,$dir)
+                                ->get();
 
-            $totalFiltered = Premise::where('fin','LIKE',"%{$search}%")
-                             ->orWhere('name', 'LIKE',"%{$search}%")
-                             ->orWhere('category', 'LIKE',"%{$search}%")
-                             ->count();
+                $totalFiltered = Premise::where('renewal_status','=', $status)
+                                ->where(function($query) use($search){
+                                    $query->where('fin','LIKE',"%{$search}%")
+                                        ->orWhere('name', 'LIKE',"%{$search}%")
+                                        ->orWhere('category', 'LIKE',"%{$search}%");
+                                })
+                                ->count();
+            }
+            else{
+                $premises =  Premise::where('fin','LIKE',"%{$search}%")
+                                ->orWhere('name', 'LIKE',"%{$search}%")
+                                ->orWhere('category', 'LIKE',"%{$search}%")
+                                ->offset($start)
+                                ->limit($limit)
+                                ->orderBy($order,$dir)
+                                ->get();
+
+                $totalFiltered = Premise::where('fin','LIKE',"%{$search}%")
+                                ->orWhere('name', 'LIKE',"%{$search}%")
+                                ->orWhere('category', 'LIKE',"%{$search}%")
+                                ->count();
+            }
         }
 
         $data = array();
@@ -259,9 +281,17 @@ class DatatablesController extends Controller
             7 => 'id'
         );
 
-        $totalData = Personnel::count();
-            
-        $totalFiltered = $totalData;
+        //Getting type
+        $type = $request->type;
+
+        if($type != ""){
+            $totalData = Personnel::where('type','=', $type)->count();
+            $totalFiltered = $totalData;
+        }
+        else{
+            $totalData = Personnel::count();
+            $totalFiltered = $totalData;
+        }
         
         $limit = $request->limit;
         $start = $request->start;
@@ -272,32 +302,65 @@ class DatatablesController extends Controller
 
         if(empty($search))
         {            
-            $personnels = Personnel::offset($start)
+            if($type != ""){
+                $personnels = Personnel::where('type','=', "$type")
+                         ->offset($start)
                          ->limit($limit)
                          ->orderBy($order,$dir)
                          ->get();
+            }
+            else{
+                $personnels = Personnel::offset($start)
+                         ->limit($limit)
+                         ->orderBy($order,$dir)
+                         ->get();
+            }
         }
         else{
-            $personnels =  Personnel::where('type', 'LIKE',"%{$search}%")
-                            ->orwhere('firstname','LIKE',"%{$search}%")
-                            ->orWhere('middlename', 'LIKE',"%{$search}%")
-                            ->orWhere('surname', 'LIKE',"%{$search}%")
-                            ->orWhere('phone', 'LIKE',"%{$search}%")
-                            ->orWhere('email', 'LIKE',"%{$search}%")
-                            ->orWhere('status', 'LIKE',"%{$search}%")
+            if($type != ""){
+                $personnels =  Personnel::where('type', '=', $type)
+                            ->where(function($query) use($search){
+                                $query->orwhere('firstname','LIKE',"%{$search}%")
+                                    ->orWhere('middlename', 'LIKE',"%{$search}%")
+                                    ->orWhere('surname', 'LIKE',"%{$search}%")
+                                    ->orWhere('phone', 'LIKE',"%{$search}%")
+                                    ->orWhere('email', 'LIKE',"%{$search}%");
+                            })
                             ->offset($start)
                             ->limit($limit)
                             ->orderBy($order,$dir)
                             ->get();
 
-            $totalFiltered = Personnel::where('type', 'LIKE',"%{$search}%")
+                $totalFiltered = Personnel::where('type', '=', $type)
+                            ->where(function($query) use($search){
+                                $query->orwhere('firstname','LIKE',"%{$search}%")
+                                    ->orWhere('middlename', 'LIKE',"%{$search}%")
+                                    ->orWhere('surname', 'LIKE',"%{$search}%")
+                                    ->orWhere('phone', 'LIKE',"%{$search}%")
+                                    ->orWhere('email', 'LIKE',"%{$search}%");
+                            })
+                            ->count();
+            }
+            else{
+                $personnels =  Personnel::where('type', 'LIKE',"%{$search}%")
                             ->orwhere('firstname','LIKE',"%{$search}%")
                             ->orWhere('middlename', 'LIKE',"%{$search}%")
                             ->orWhere('surname', 'LIKE',"%{$search}%")
                             ->orWhere('phone', 'LIKE',"%{$search}%")
                             ->orWhere('email', 'LIKE',"%{$search}%")
-                            ->orWhere('status', 'LIKE',"%{$search}%")
+                            ->offset($start)
+                            ->limit($limit)
+                            ->orderBy($order,$dir)
+                            ->get();
+
+                $totalFiltered = Personnel::where('type', 'LIKE',"%{$search}%")
+                            ->orwhere('firstname','LIKE',"%{$search}%")
+                            ->orWhere('middlename', 'LIKE',"%{$search}%")
+                            ->orWhere('surname', 'LIKE',"%{$search}%")
+                            ->orWhere('phone', 'LIKE',"%{$search}%")
+                            ->orWhere('email', 'LIKE',"%{$search}%")
                             ->count();
+            }
         }
 
         $data = array();
