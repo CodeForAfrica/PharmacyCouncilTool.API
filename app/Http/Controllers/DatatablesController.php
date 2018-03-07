@@ -67,9 +67,17 @@ class DatatablesController extends Controller
             6 => 'id'
         );
 
-        $totalData = Premise::count();
-            
-        $totalFiltered = $totalData;
+        //Getting status
+        $status = $request->status;
+
+        if($status != ""){
+            $totalData = Premise::where('renewal_status','=', $status)->count();
+            $totalFiltered = $totalData;
+        }
+        else{
+            $totalData = Premise::count();
+            $totalFiltered = $totalData;
+        }
         
         $limit = $request->limit;
         $start = $request->start;
@@ -80,10 +88,19 @@ class DatatablesController extends Controller
 
         if(empty($search))
         {            
-            $premises = Premise::offset($start)
+            if($status != ""){
+                $premises = Premise::where('renewal_status','=', $status)
+                         ->offset($start)
                          ->limit($limit)
                          ->orderBy($order,$dir)
                          ->get();
+            }
+            else{
+                $premises = Premise::offset($start)
+                         ->limit($limit)
+                         ->orderBy($order,$dir)
+                         ->get();
+            }
         }
         else{
             $premises =  Premise::where('fin','LIKE',"%{$search}%")
