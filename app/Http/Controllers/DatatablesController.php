@@ -197,9 +197,17 @@ class DatatablesController extends Controller
             8 => 'id'
         );
 
-        $totalData = Owner::count();
-            
-        $totalFiltered = $totalData;
+        //Getting status
+        $status = $request->status;
+
+        if($status != ""){
+            $totalData = Owner::where('status','=', $status)->count();
+            $totalFiltered = $totalData;
+        }
+        else{
+            $totalData = Owner::count();
+            $totalFiltered = $totalData;
+        }
         
         $limit = $request->limit;
         $start = $request->start;
@@ -210,13 +218,49 @@ class DatatablesController extends Controller
 
         if(empty($search))
         {            
-            $owners = Owner::offset($start)
+            if($status != ""){
+                $owners = Owner::where('status','=', $status)
+                         ->offset($start)
                          ->limit($limit)
                          ->orderBy($order,$dir)
                          ->get();
+            }
+            else{
+                $owners = Owner::offset($start)
+                         ->limit($limit)
+                         ->orderBy($order,$dir)
+                         ->get();
+            }
         }
         else{
-            $owners =  Owner::where('firstname','LIKE',"%{$search}%")
+            if($status != ""){
+                $owners =  Owner::where('status','=', $status)
+                            ->where(function($query) use($search){
+                                $query->where('firstname','LIKE',"%{$search}%")
+                                    ->orWhere('middlename', 'LIKE',"%{$search}%")
+                                    ->orWhere('surname', 'LIKE',"%{$search}%")
+                                    ->orWhere('phone', 'LIKE',"%{$search}%")
+                                    ->orWhere('email', 'LIKE',"%{$search}%")
+                                    ->orWhere('occupation', 'LIKE',"%{$search}%");
+                            })
+                            ->offset($start)
+                            ->limit($limit)
+                            ->orderBy($order,$dir)
+                            ->get();
+
+                $totalFiltered = Owner::where('status','=', $status)
+                            ->where(function($query) use($search){
+                                $query->where('firstname','LIKE',"%{$search}%")
+                                    ->orWhere('middlename', 'LIKE',"%{$search}%")
+                                    ->orWhere('surname', 'LIKE',"%{$search}%")
+                                    ->orWhere('phone', 'LIKE',"%{$search}%")
+                                    ->orWhere('email', 'LIKE',"%{$search}%")
+                                    ->orWhere('occupation', 'LIKE',"%{$search}%");
+                            })
+                            ->count();
+            }
+            else{
+                $owners =  Owner::where('firstname','LIKE',"%{$search}%")
                             ->orWhere('middlename', 'LIKE',"%{$search}%")
                             ->orWhere('surname', 'LIKE',"%{$search}%")
                             ->orWhere('phone', 'LIKE',"%{$search}%")
@@ -228,7 +272,7 @@ class DatatablesController extends Controller
                             ->orderBy($order,$dir)
                             ->get();
 
-            $totalFiltered = Owner::where('firstname','LIKE',"%{$search}%")
+                $totalFiltered = Owner::where('firstname','LIKE',"%{$search}%")
                             ->orWhere('middlename', 'LIKE',"%{$search}%")
                             ->orWhere('surname', 'LIKE',"%{$search}%")
                             ->orWhere('phone', 'LIKE',"%{$search}%")
@@ -236,6 +280,7 @@ class DatatablesController extends Controller
                             ->orWhere('occupation', 'LIKE',"%{$search}%")
                             ->orWhere('status', 'LIKE',"%{$search}%")
                             ->count();
+            }
         }
 
         $data = array();
@@ -647,9 +692,17 @@ class DatatablesController extends Controller
             4 => 'id'
         );
 
-        $totalData = Report::count();
-            
-        $totalFiltered = $totalData;
+        //Getting gender
+        $gender = $request->gender;
+
+        if($gender != ""){
+            $totalData = Report::where('gender','=', $gender)->count();
+            $totalFiltered = $totalData;
+        }
+        else{
+            $totalData = Report::count();
+            $totalFiltered = $totalData;
+        }
         
         $limit = $request->limit;
         $start = $request->start;
@@ -660,24 +713,53 @@ class DatatablesController extends Controller
 
         if(empty($search))
         {            
-            $reports = Report::offset($start)
+            if($gender != ""){
+                $reports = Report::where('gender','=', $gender)
+                         ->offset($start)
                          ->limit($limit)
                          ->orderBy($order,$dir)
                          ->get();
+            }
+            else{
+                $reports = Report::offset($start)
+                         ->limit($limit)
+                         ->orderBy($order,$dir)
+                         ->get();
+            }
         }
         else{
-            $reports =  Report::where('gender', 'LIKE',"%{$search}%")
-                            ->orwhere('pharmacy_registratoin_number','LIKE',"%{$search}%")
+            if($gender != ""){
+                $reports =  Report::where('gender', '=', $gender)
+                            ->where(function($query) use($search){
+                                $query->orwhere('pharmacy_registration_number','LIKE',"%{$search}%")
+                                    ->orWhere('message', 'LIKE',"%{$search}%");
+                            })
+                            ->offset($start)
+                            ->limit($limit)
+                            ->orderBy($order,$dir)
+                            ->get();
+
+                $totalFiltered = Report::where('gender', '=', $gender)
+                            ->where(function($query) use($search){
+                                $query->orwhere('pharmacy_registration_number','LIKE',"%{$search}%")
+                                    ->orWhere('message', 'LIKE',"%{$search}%");
+                            })
+                            ->count();
+            }
+            else{
+                $reports =  Report::where('gender', 'LIKE',"%{$search}%")
+                            ->orwhere('pharmacy_registration_number','LIKE',"%{$search}%")
                             ->orWhere('message', 'LIKE',"%{$search}%")
                             ->offset($start)
                             ->limit($limit)
                             ->orderBy($order,$dir)
                             ->get();
 
-            $totalFiltered = Report::where('gender', 'LIKE',"%{$search}%")
-                            ->orwhere('pharmacy_registratoin_number','LIKE',"%{$search}%")
+                $totalFiltered = Report::where('gender', 'LIKE',"%{$search}%")
+                            ->orwhere('pharmacy_registration_number','LIKE',"%{$search}%")
                             ->orWhere('message', 'LIKE',"%{$search}%")
                             ->count();
+            }
         }
 
         $data = array();
