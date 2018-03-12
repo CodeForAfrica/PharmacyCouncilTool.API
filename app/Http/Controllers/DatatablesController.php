@@ -10,6 +10,9 @@ use App\Dispenser;
 use App\User;
 use App\Attendance;
 use App\Report;
+use App\Region;
+use App\District;
+use App\Ward;
 
 use Yajra\Datatables\Datatables;
 use Carbon\Carbon;
@@ -775,6 +778,229 @@ class DatatablesController extends Controller
                 $nestedData['options'] = "<a href='#' type='button' class='btn btn-xs btn-danger no-radius' style='margin-right:10px;'>Delete</a>";
                 $nestedData['options'] .= "<a href='#' type='button' class='btn btn-xs btn-warning no-radius' style='margin-right:10px;'>Edit</a>";
                 $nestedData['options'] .= "<a href='/admin/reports/view/".$report->id."' type='button' class='btn btn-xs btn-success no-radius'>View</a>";
+                $data[] = $nestedData;
+            }
+        }
+
+        $json_data = array(
+            "draw"            => intval($request->input('draw')),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data   
+            );
+
+        echo json_encode($json_data);
+    }
+
+    public function getRegions(Request $request){
+        $columns = array(
+            0 => 'id',
+            1 => 'name',
+            2 => 'capital',
+            3 => 'districts',
+            4 => 'zone',
+            5 => 'population',
+            6 => 'options'
+        );
+
+        $totalData = Region::count();
+            
+        $totalFiltered = $totalData;
+        
+        $limit = $request->limit;
+        $start = $request->start;
+
+        $order = $columns[$request->order];
+        $dir = $request->dir;
+        $search = $request->search;
+
+        if(empty($search))
+        {            
+            $regions = Region::offset($start)
+                         ->limit($limit)
+                         ->orderBy($order,$dir)
+                         ->get();
+        }
+        else{
+            $regions =  Region::where('name', 'LIKE',"%{$search}%")
+                            ->orwhere('capital','LIKE',"%{$search}%")
+                            ->orWhere('districts', 'LIKE',"%{$search}%")
+                            ->orWhere('zone', 'LIKE',"%{$search}%")
+                            ->orWhere('population', 'LIKE',"%{$search}%")
+                            ->offset($start)
+                            ->limit($limit)
+                            ->orderBy($order,$dir)
+                            ->get();
+
+            $totalFiltered = Region::where('name', 'LIKE',"%{$search}%")
+                            ->orwhere('capital','LIKE',"%{$search}%")
+                            ->orWhere('districts', 'LIKE',"%{$search}%")
+                            ->orWhere('zone', 'LIKE',"%{$search}%")
+                            ->orWhere('population', 'LIKE',"%{$search}%")
+                            ->count();
+        }
+
+        $data = array();
+        if(!empty($regions))
+        {
+            foreach ($regions as $region)
+            {
+                $nestedData['id'] = $region->id;
+                $nestedData['name'] = $region->name;
+                $nestedData['capital'] = $region->capital;
+                $nestedData['districts'] = $region->districts;
+                $nestedData['zone'] = $region->zone;
+                $nestedData['population'] = $region->population;
+
+                $nestedData['options'] = "<a href='#' type='button' class='btn btn-xs btn-danger no-radius' style='margin-right:10px;'disabled>Delete</a>";
+                $nestedData['options'] .= "<a href='#' type='button' class='btn btn-xs btn-warning no-radius' style='margin-right:10px;'disabled>Edit</a>";
+                $nestedData['options'] .= "<a href='#' type='button' class='btn btn-xs btn-success no-radius' disabled>View</a>";
+                $data[] = $nestedData;
+            }
+        }
+
+        $json_data = array(
+            "draw"            => intval($request->input('draw')),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data   
+            );
+
+        echo json_encode($json_data);
+    }
+
+    public function getDistricts(Request $request){
+        $columns = array(
+            0 => 'id',
+            1 => 'name',
+            2 => 'capital',
+            3 => 'region',
+            4 => 'population',
+            5 => 'options'
+        );
+
+        $totalData = District::count();
+            
+        $totalFiltered = $totalData;
+        
+        $limit = $request->limit;
+        $start = $request->start;
+
+        $order = $columns[$request->order];
+        $dir = $request->dir;
+        $search = $request->search;
+
+        if(empty($search))
+        {            
+            $districts = District::offset($start)
+                         ->limit($limit)
+                         ->orderBy($order,$dir)
+                         ->get();
+        }
+        else{
+            $districts =  District::where('name', 'LIKE',"%{$search}%")
+                            ->orwhere('capital','LIKE',"%{$search}%")
+                            ->orWhere('population', 'LIKE',"%{$search}%")
+                            ->offset($start)
+                            ->limit($limit)
+                            ->orderBy($order,$dir)
+                            ->get();
+
+            $totalFiltered = District::where('name', 'LIKE',"%{$search}%")
+                            ->orwhere('capital','LIKE',"%{$search}%")
+                            ->orWhere('population', 'LIKE',"%{$search}%")
+                            ->count();
+        }
+
+        $data = array();
+        if(!empty($districts))
+        {
+            foreach ($districts as $district)
+            {
+                $region_name = "UNKNOWN";
+
+                $nestedData['id'] = $district->id;
+                $nestedData['name'] = $district->name;
+                $nestedData['capital'] = $district->capital;
+                    // Finding Region Name
+                    $region = Region::where('id', $district->region_id)->first();
+                    if($region) $region_name = $region->name;
+                    
+                $nestedData['region'] = $region_name;
+                $nestedData['population'] = $district->population;
+
+                $nestedData['options'] = "<a href='#' type='button' class='btn btn-xs btn-danger no-radius' style='margin-right:10px;'disabled>Delete</a>";
+                $nestedData['options'] .= "<a href='#' type='button' class='btn btn-xs btn-warning no-radius' style='margin-right:10px;'disabled>Edit</a>";
+                $nestedData['options'] .= "<a href='#' type='button' class='btn btn-xs btn-success no-radius' disabled>View</a>";
+                $data[] = $nestedData;
+            }
+        }
+
+        $json_data = array(
+            "draw"            => intval($request->input('draw')),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data   
+            );
+
+        echo json_encode($json_data);
+    }
+
+    public function getWards(Request $request){
+        $columns = array(
+            0 => 'id',
+            1 => 'name',
+            2 => 'district',
+            3 => 'options'
+        );
+
+        $totalData = Ward::count();
+            
+        $totalFiltered = $totalData;
+        
+        $limit = $request->limit;
+        $start = $request->start;
+
+        $order = $columns[$request->order];
+        $dir = $request->dir;
+        $search = $request->search;
+
+        if(empty($search))
+        {            
+            $wards = Ward::offset($start)
+                         ->limit($limit)
+                         ->orderBy($order,$dir)
+                         ->get();
+        }
+        else{
+            $wards =  Ward::where('name', 'LIKE',"%{$search}%")
+                            ->offset($start)
+                            ->limit($limit)
+                            ->orderBy($order,$dir)
+                            ->get();
+
+            $totalFiltered = Ward::where('name', 'LIKE',"%{$search}%")
+                            ->count();
+        }
+
+        $data = array();
+        if(!empty($wards))
+        {
+            foreach ($wards as $ward)
+            {
+                $district_name = "UNKNOWN";
+
+                $nestedData['id'] = $ward->id;
+                $nestedData['name'] = $ward->name;
+                    // Finding District Name
+                    $district = District::where('id', $ward->district_id)->first();
+                    if($district) $district_name = $district->name;
+                
+                $nestedData['district'] = $district_name;
+
+                $nestedData['options'] = "<a href='#' type='button' class='btn btn-xs btn-danger no-radius' style='margin-right:10px;'disabled>Delete</a>";
+                $nestedData['options'] .= "<a href='#' type='button' class='btn btn-xs btn-warning no-radius' style='margin-right:10px;'disabled>Edit</a>";
+                $nestedData['options'] .= "<a href='#' type='button' class='btn btn-xs btn-success no-radius' disabled>View</a>";
                 $data[] = $nestedData;
             }
         }

@@ -110,6 +110,9 @@ Route::group(['middleware' => ['auth:api','cors']], function(){
     Route::post('datatables/getusers', 'DatatablesController@getUsers');
     Route::post('datatables/getattendances', 'DatatablesController@getAttendances');
     Route::post('datatables/getreports', 'DatatablesController@getReports');
+    Route::post('datatables/getregions', 'DatatablesController@getRegions');
+    Route::post('datatables/getdistricts', 'DatatablesController@getDistricts');
+    Route::post('datatables/getwards', 'DatatablesController@getWards');
 });
 
 Route::group(['middleware' => 'cors'], function(){
