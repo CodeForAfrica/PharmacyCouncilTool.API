@@ -13,6 +13,7 @@ use App\Report;
 use App\Region;
 use App\District;
 use App\Ward;
+use App\Addo;
 
 use Yajra\Datatables\Datatables;
 use Carbon\Carbon;
@@ -1001,6 +1002,112 @@ class DatatablesController extends Controller
                 $nestedData['options'] = "<a href='#' type='button' class='btn btn-xs btn-danger no-radius' style='margin-right:10px;'disabled>Delete</a>";
                 $nestedData['options'] .= "<a href='#' type='button' class='btn btn-xs btn-warning no-radius' style='margin-right:10px;'disabled>Edit</a>";
                 $nestedData['options'] .= "<a href='#' type='button' class='btn btn-xs btn-success no-radius' disabled>View</a>";
+                $data[] = $nestedData;
+            }
+        }
+
+        $json_data = array(
+            "draw"            => intval($request->input('draw')),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data   
+            );
+
+        echo json_encode($json_data);
+    }
+
+    public function getAddos(Request $request){
+        $columns = array(
+            0 => 'id',
+            1 => 'name', 
+            2 => 'fin',
+            3 => 'region',
+            4 => 'district',
+            5 => 'ward',
+            6 => 'owners',
+            7 => 'id'
+        );
+
+        $totalData = Addo::count();
+        $totalFiltered = $totalData;
+        
+        $limit = $request->limit;
+        $start = $request->start;
+
+        $order = $columns[$request->order];
+        $dir = $request->dir;
+        $search = $request->search;
+
+        if(empty($search))
+        {            
+            $addos = Addo::offset($start)
+                         ->limit($limit)
+                         ->orderBy($order,$dir)
+                         ->get();
+        }
+        else{
+            $addos =  Addo::where('name','LIKE',"%{$search}%")
+                                ->orWhere('fin', 'LIKE',"%{$search}%")
+                                ->offset($start)
+                                ->limit($limit)
+                                ->orderBy($order,$dir)
+                                ->get();
+
+            $totalFiltered = Addo::where('name','LIKE',"%{$search}%")
+                                ->orWhere('fin', 'LIKE',"%{$search}%")
+                                ->orWhere('category', 'LIKE',"%{$search}%")
+                                ->count();
+        }
+
+        $data = array();
+        if(!empty($addos))
+        {
+            foreach ($addos as $addo)
+            {
+                $nestedData['id'] = $addo->id;
+                $nestedData['name'] = $addo->name;
+                $nestedData['fin'] = $addo->fin;
+
+                    // check for region
+                    if($addo->region_id != 9999)
+                        $addo->region = $addo->region;
+                    else $addo->region = $this->unknown_region;
+
+                    // Check for district
+                    if($addo->district_id != 9999)
+                        $addo->district = $addo->district;
+                    else $addo->district = $this->unknown_district;
+
+                    // Check for ward
+                    if($addo->ward_id !== 9999)
+                        $addo->ward = $addo->ward;
+                    else $addo->ward = $this->unknown_ward;
+
+                    // Check for owners
+                    $owners_names = "";
+                    if($addo->owners_ids != ""){
+                        $ids = explode(":",$addo->owners_ids);
+                        if(count($ids) > 0){
+                            for($x=0; $x<count($ids); $x++){
+                                // Finding Owner
+                                $owner = Owner::where('id', $ids[$x])->first();
+                                if($owner){
+                                    $owners_names .= ucfirst(strtolower($owner->firstname));
+                                    $owners_names .= " ";
+                                    $owners_names .= ucfirst(strtolower($owner->surname));
+                                }
+                            }
+                        }
+                    }
+
+
+                $nestedData['region'] = $addo->region['name'];
+                $nestedData['district'] = $addo->district['name'];
+                $nestedData['ward'] = $addo->ward['name'];
+                $nestedData['owners'] = $owners_names;
+                $nestedData['options'] = "<a href='#".$addo->id."' type='button' class='btn btn-xs btn-danger no-radius' style='margin-right:10px' disabled>Delete</a>";
+                $nestedData['options'] .= "<a href='#".$addo->id."' type='button' class='btn btn-xs btn-warning no-radius' style='margin-right:10px;' disabled>Edit</a>";
+                $nestedData['options'] .= "<a href='#".$addo->id."' type='button' class='btn btn-xs btn-success no-radius' disabled>View</a>";
                 $data[] = $nestedData;
             }
         }

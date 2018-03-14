@@ -9,7 +9,8 @@
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "tymon/jwt-auth": "0.5.*",
-        "unlu/laravel-api-query-builder": "~1.0"
+        "unlu/laravel-api-query-builder": "~1.0",
+        "doctrine/dbal": "~2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

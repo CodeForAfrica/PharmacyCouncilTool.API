@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Addo extends Model
 {
-    protected $fillable = ['name', 'accreditation_no', 'region_id', 'district_id', 'ward_id', 'street', 'owner_id'];
+    protected $fillable = ['name', 'fin', 'region_id', 'district_id', 'ward_id', 'street', 'owners_ids'];
 
     public function region()
     {
