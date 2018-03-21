@@ -1105,9 +1105,9 @@ class DatatablesController extends Controller
                 $nestedData['district'] = $addo->district['name'];
                 $nestedData['ward'] = $addo->ward['name'];
                 $nestedData['owners'] = $owners_names;
-                $nestedData['options'] = "<a href='#".$addo->id."' type='button' class='btn btn-xs btn-danger no-radius' style='margin-right:10px' disabled>Delete</a>";
-                $nestedData['options'] .= "<a href='#".$addo->id."' type='button' class='btn btn-xs btn-warning no-radius' style='margin-right:10px;' disabled>Edit</a>";
-                $nestedData['options'] .= "<a href='#".$addo->id."' type='button' class='btn btn-xs btn-success no-radius' disabled>View</a>";
+                $nestedData['options'] = "<a href='/admin/addos/delete/".$addo->id."' type='button' class='btn btn-xs btn-danger no-radius' style='margin-right:10px'>Delete</a>";
+                $nestedData['options'] .= "<a href='/admin/addos/edit/".$addo->id."' type='button' class='btn btn-xs btn-warning no-radius' style='margin-right:10px;'>Edit</a>";
+                $nestedData['options'] .= "<a href='/admin/addos/view/".$addo->id."' type='button' class='btn btn-xs btn-success no-radius'>View</a>";
                 $data[] = $nestedData;
             }
         }

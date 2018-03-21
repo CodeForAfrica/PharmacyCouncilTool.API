@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Addo;
+use App\Owner;
 
 use Unlu\Laravel\Api\QueryBuilder;
 
@@ -25,7 +26,7 @@ class AddoController extends Controller
                 $addo->region = $addo->region;
                 $addo->district = $addo->district;
                 $addo->ward = $addo->ward;
-                $addo->owner = $addo->owner;
+                //$addo->owner = $addo->owner;
                 $status = 200;
             }
             else
@@ -51,7 +52,7 @@ class AddoController extends Controller
                     $addos[$x]->region = $addos[$x]->region;
                     $addos[$x]->district = $addos[$x]->district;
                     $addos[$x]->ward = $addos[$x]->ward;
-                    $addos[$x]->owner = $addos[$x]->owner;
+                    //$addos[$x]->owner = $addos[$x]->owner;
                 }
             }
             else $status = 404;
@@ -71,7 +72,9 @@ class AddoController extends Controller
             $addo->region = $addo->region;
             $addo->district = $addo->district;
             $addo->ward = $addo->ward;
-            $addo->owner = $addo->owner;
+                // Finding Owner
+                $owner = Owner::where('id', $addo->owners_ids)->first();
+            $addo->owner = $owner;
             $status = 200;
         }
         else $status = 404;
