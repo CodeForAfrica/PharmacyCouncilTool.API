@@ -10,6 +10,32 @@ use Unlu\Laravel\Api\QueryBuilder;
 
 class AddoController extends Controller
 {
+    public $unknown_region = array(
+        'name' => "UNKNOWN",
+        'capital' => "UNKNOWN",
+        'districts' => 0,
+        'keycode' => "UNKNOWN",
+        'area' => "UNKNOWN",
+        'population' => "UNKNOWN",
+        'postcode' => "UNKNOWN",
+        'zone' => "UNKNOWN"
+    );
+
+    public $unknown_district = array(
+        'region_id' => 9999,
+        'name' => "UNKNOWN",
+        'keycode' => "UNKNOWN",
+        'capital' => "UNKNOWN",
+        'area' => "UNKNOWN",
+        'population' => "UNKNOWN"
+    );
+
+    public $unknown_ward = array(
+        'district_id' => 9999,
+        'name' => "UNKNOWN",
+        'keycode' => "UNKNOWN"
+    );
+
     public function index(Request $request)
     {
         $queryBuilder = new QueryBuilder(new Addo, $request);
@@ -23,9 +49,22 @@ class AddoController extends Controller
             if(isset($queryBuilder->build()->get()[0]))
             {
                 $addo = $queryBuilder->build()->get()[0];
-                $addo->region = $addo->region;
-                $addo->district = $addo->district;
-                $addo->ward = $addo->ward;
+
+                // check for region
+                if($addo->region_id != 9999)
+                    $addo->region = $addo->region;
+                else $addo->region = $this->unknown_region;
+
+                // Check for district
+                if($addo->district_id != 9999)
+                    $addo->district = $addo->district;
+                else $addo->district = $this->unknown_district;
+
+                // Check for ward
+                if($addo->ward_id !== 9999)
+                    $addo->ward = $addo->ward;
+                else $addo->ward = $this->unknown_ward;
+
                 //$addo->owner = $addo->owner;
                 $status = 200;
             }
@@ -49,9 +88,21 @@ class AddoController extends Controller
                 $status = 200;
 
                 for($x=0; $x < count($addos); $x++){
-                    $addos[$x]->region = $addos[$x]->region;
-                    $addos[$x]->district = $addos[$x]->district;
-                    $addos[$x]->ward = $addos[$x]->ward;
+                    // check for region
+                    if($addos[$x]->region_id != 9999)
+                        $addos[$x]->region = $addos[$x]->region;
+                    else $addos[$x]->region = $this->unknown_region;
+
+                    // Check for district
+                    if($addos[$x]->district_id != 9999)
+                        $addos[$x]->district = $addos[$x]->district;
+                    else $addos[$x]->district = $this->unknown_district;
+
+                    // Check for ward
+                    if($addos[$x]->ward_id !== 9999)
+                        $addos[$x]->ward = $addos[$x]->ward;
+                    else $addos[$x]->ward = $this->unknown_ward;
+
                     //$addos[$x]->owner = $addos[$x]->owner;
                 }
             }
