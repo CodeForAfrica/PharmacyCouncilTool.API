@@ -120,9 +120,21 @@ class AddoController extends Controller
         $status = "";
         if($addo)
         {
-            $addo->region = $addo->region;
-            $addo->district = $addo->district;
-            $addo->ward = $addo->ward;
+            // check for region
+            if($addo->region_id != 9999)
+                $addo->region = $addo->region;
+            else $addo->region = $this->unknown_region;
+
+            // Check for district
+            if($addo->district_id != 9999)
+                $addo->district = $addo->district;
+            else $addo->district = $this->unknown_district;
+
+            // Check for ward
+            if($addo->ward_id !== 9999)
+                $addo->ward = $addo->ward;
+            else $addo->ward = $this->unknown_ward;
+            
                 // Finding Owner
                 $owner = Owner::where('id', $addo->owners_ids)->first();
             $addo->owner = $owner;
