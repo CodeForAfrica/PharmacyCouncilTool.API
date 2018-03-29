@@ -131,7 +131,7 @@ class AddoController extends Controller
             else $addo->district = $this->unknown_district;
 
             // Check for ward
-            if($addo->ward_id !== 9999 || $addo->ward_id == null)
+            if($addo->ward_id !== 9999 || empty($addo->ward_id))
                 $addo->ward = $addo->ward;
             else $addo->ward = $this->unknown_ward;
             
