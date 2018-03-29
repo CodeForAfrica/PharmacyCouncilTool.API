@@ -164,7 +164,7 @@ class DatatablesController extends Controller
                     else $premise->district = $this->unknown_district;
 
                     // Check for pharmacist
-                    if($premise->pharmacist_id !== 9999)
+                    if($premise->pharmacist_id != 9999)
                         $premise->pharmacist = $premise->pharmacist;
                     else $premise->pharmacist = $this->unknown_personnel;
                     
@@ -1079,7 +1079,7 @@ class DatatablesController extends Controller
                     else $addo->district = $this->unknown_district;
 
                     // Check for ward
-                    if($addo->ward_id !== 9999)
+                    if($addo->ward_id != 9999)
                         $addo->ward = $addo->ward;
                     else $addo->ward = $this->unknown_ward;
 

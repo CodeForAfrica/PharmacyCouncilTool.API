@@ -73,7 +73,7 @@ class PremiseController extends Controller
                 else $premise->district = $this->unknown_district;
 
                 // Check for ward
-                if($premise->ward_id !== 9999)
+                if($premise->ward_id != 9999)
                     $premise->ward = $premise->ward;
                 else $premise->ward = $this->unknown_ward;
 
@@ -93,7 +93,7 @@ class PremiseController extends Controller
                 $premise->owners = $owners;
 
                 // Check for pharmacist
-                if($premise->pharmacist_id !== 9999)
+                if($premise->pharmacist_id != 9999)
                     $premise->pharmacist = $premise->pharmacist;
                 else $premise->pharmacist = $this->unknown_personnel;
             }
@@ -128,7 +128,7 @@ class PremiseController extends Controller
                     else $premises[$x]->district = $this->unknown_district;
 
                     // Check for ward
-                    if($premises[$x]->ward_id !== 9999)
+                    if($premises[$x]->ward_id != 9999)
                         $premises[$x]->ward = $premises[$x]->ward;
                     else $premises[$x]->ward = $this->unknown_ward;
 
@@ -197,7 +197,7 @@ class PremiseController extends Controller
             else $premise->district = $this->unknown_district;
 
             // Check for ward
-            if($premise->ward_id !== 9999)
+            if($premise->ward_id != 9999)
                 $premise->ward = $premise->ward;
             else $premise->ward = $this->unknown_ward;
 

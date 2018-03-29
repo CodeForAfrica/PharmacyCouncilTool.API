@@ -61,7 +61,7 @@ class AddoController extends Controller
                 else $addo->district = $this->unknown_district;
 
                 // Check for ward
-                if($addo->ward_id !== 9999)
+                if($addo->ward_id != 9999)
                     $addo->ward = $addo->ward;
                 else $addo->ward = $this->unknown_ward;
 
@@ -99,7 +99,7 @@ class AddoController extends Controller
                     else $addos[$x]->district = $this->unknown_district;
 
                     // Check for ward
-                    if($addos[$x]->ward_id !== 9999)
+                    if($addos[$x]->ward_id != 9999)
                         $addos[$x]->ward = $addos[$x]->ward;
                     else $addos[$x]->ward = $this->unknown_ward;
 
@@ -131,7 +131,7 @@ class AddoController extends Controller
             else $addo->district = $this->unknown_district;
 
             // Check for ward
-            if($addo->ward_id !== 9999 || $addo->ward_id == "")
+            if($addo->ward_id != 9999)
                 $addo->ward = $addo->ward;
             else $addo->ward = $this->unknown_ward;
             
