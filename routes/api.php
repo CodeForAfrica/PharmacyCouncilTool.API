@@ -130,4 +130,19 @@ Route::group(['middleware' => 'cors'], function(){
     // User Login API Routes without Token.
     Route::get('user/login', 'Auth\APILoginController@index');
     Route::get('user/auth', 'Auth\APILoginController@getAuthenticatedUser');
+
+    // Regions API route.
+    Route::get('regions', 'RegionController@index');
+    Route::get('regions/{region}', 'RegionController@show');
+
+    // Districts API route.
+    Route::get('districts', 'DistrictController@index');
+    Route::get('districts/{district}', 'DistrictController@show');
+
+    // Wards API route.
+    Route::get('wards', 'WardController@index');
+    Route::get('wards/{ward}', 'WardController@show');
+
+    // LookUp API routes without Token.
+    Route::get('lookup', 'LookUpController@index');
 });
