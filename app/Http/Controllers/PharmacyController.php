@@ -99,6 +99,7 @@ class PharmacyController extends Controller
                 // No Addo found
                 // Searching for Premise
                 $premise = Premise::where('fin', $registration_number)->first();
+                $owners = array();
 
                 if($premise)
                 {
