@@ -287,5 +287,137 @@ class LookUpController extends Controller
             'tafuta_query' => $tafuta_query
         ],200);
     }
+
+    public function search(Request $request){
+        $status = 0;
+        $message = "";
+        $pharmacies = array();
+
+        $location = $request->location;
+        $name = $request->name;
+
+        
+        if($request->search_by && $request->query)
+        {
+            // For Addo
+            //Search by pharmacy name.
+            if($request->search_by == "name"){
+                $addos = Addo::where('name','LIKE',"%{$name}%")->limit(20)->get();
+            }
+
+            if(count($addos) > 0){
+                for($x = 0; $x < count($addos); $x++){
+                    $addo = $addos[$x];
+
+                    // check for region
+                    if($addo->region_id != 9999)
+                        $addo->region = $addo->region;
+                    else $addo->region = $this->unknown_region;
+
+                    // Check for district
+                    if($addo->district_id != 9999)
+                        $addo->district = $addo->district;
+                    else $addo->district = $this->unknown_district;
+
+                    // Check for ward
+                    if($addo->ward_id != 9999)
+                        $addo->ward = $addo->ward;
+                    else $addo->ward = $this->unknown_ward;
+                    
+                    $pharmacy = array(
+                        'type' => "Addo",
+                        'registration_number' => $addo->fin,
+                        'name' => $addo->name,
+                        'location' => $addo->street . " " . $addo->ward['name'],
+                        'street' => $addo->street,
+                        'ward' => $addo->ward['name'],
+                        'district' => $addo->district['name'],
+                        'region' => $addo->region['name'],
+                        'registration_date' => "UNKNOWN",
+                        'pharmacist' => "UNKNOWN",
+                        'owners' => ""
+                    );
+
+                    $pharmacies[] = $pharmacy;
+                }// <-- End For Loop
+            }// <-- End IF
+
+            // For Premise
+            //Search by pharmacy name.
+            if($request->search_by == "name"){
+                $premises = Premise::where('name','LIKE',"%{$name}%")->limit(20)->get();
+            }
+
+            if(count($premises) > 0){
+                for($p = 0; $p < count($premises); $p++){
+                    $premise = $premises[$p];
+
+                    // check for region
+                    if($premise->region_id != 9999)
+                        $premise->region = $premise->region;
+                    else $premise->region = $this->unknown_region;
+
+                    // Check for district
+                    if($premise->district_id != 9999)
+                        $premise->district = $premise->district;
+                    else $premise->district = $this->unknown_district;
+
+                    // Check for ward
+                    if($premise->ward_id != 9999)
+                        $premise->ward = $premise->ward;
+                    else $premise->ward = $this->unknown_ward;
+
+                    // Getting owners
+                    $owners_ids = $owners = array();
+                    if($premise->owners_ids){
+                        $owners_ids = explode(":",$premise->owners_ids);
+                        if(count($owners_ids) > 0){
+                            for($x=0;$x < count($owners_ids); $x++){
+                                $owner = Owner::find($owners_ids[$x]);
+                                if(!empty($owner) && isset($owner->id)){
+                                    $owners[] = $owner;
+                                }
+                            }
+                        }
+                    }
+
+                    $premise->owners = $owners;
+
+                    // Check for pharmacist
+                    if($premise->pharmacist_id != 9999)
+                        $premise->pharmacist = $premise->pharmacist;
+                    else $premise->pharmacist = $this->unknown_personnel;
+
+                    $pharmacy = array(
+                        'type' => "Premise",
+                        'registration_number' => $premise->fin,
+                        'name' => $premise->name,
+                        'location' => $premise->physical,
+                        'street' => $premise->village,
+                        'ward' => $premise->ward['name'],
+                        'district' => $premise->district['name'],
+                        'region' => $premise->region['name'],
+                        'registration_date' => $premise->registration_date,
+                        'pharmacist' => ucfirst(strtolower($premise->pharmacist->firstname)) ." ". ucfirst(strtolower($premise->pharmacist->middlename)) ." ". ucfirst(strtolower($premise->pharmacist->surname)),
+                        'owners' => $premise->owners
+                    );
+
+                    $pharmacies[] = $pharmacy;
+                }
+            }
+        }
+        else
+        {
+            $status = 404;
+            $message = "Pitisha mahali au jina la duka la dawa.";
+            $pharmacies = array();
+        }
+
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+            'pharmacies' => $pharmacies
+        ],200);
+    }
 }
 

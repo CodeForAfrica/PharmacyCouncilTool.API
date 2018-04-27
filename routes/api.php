@@ -145,4 +145,7 @@ Route::group(['middleware' => 'cors'], function(){
 
     // LookUp API routes without Token.
     Route::get('lookup', 'LookUpController@index');
+
+    // Search
+    Route::get('searchpharmacy', 'LookUpController@search');
 });
