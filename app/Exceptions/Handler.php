@@ -13,7 +13,7 @@ class Handler extends ExceptionHandler
     /**
      * A list of the exception types that should not be reported.
      *
-     * @var array<int, class-string<\Throwable>>
+     * @var array
      */
     protected $dontReport = [
         \Illuminate\Auth\AuthenticationException::class,
@@ -24,6 +24,14 @@ class Handler extends ExceptionHandler
         \Illuminate\Validation\ValidationException::class,
     ];
 
+    /**
+     * Report or log an exception.
+     *
+     * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
+     *
+     * @param  \Exception  $exception
+     * @return void
+     */
     public function render(mixed $request, Throwable $exception): JsonResponse
     {
         $json = [
@@ -35,6 +43,13 @@ class Handler extends ExceptionHandler
         return response()->json($json, 400);
     }
 
+    /**
+     * Convert an authentication exception into an unauthenticated response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Auth\AuthenticationException  $exception
+     * @return \Illuminate\Http\Response
+     */
     protected function unauthenticated(mixed $request, AuthenticationException $exception): Response
     {
         if ($request->expectsJson()) {
