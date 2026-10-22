@@ -25,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        \Illuminate\Database\Connection::resolverFor('mysql', function ($pdo, $database, $prefix, $config) {
+            return new \App\Database\LegacyMySqlConnection($pdo, $database, $prefix, $config);
+        });
     }
 }
