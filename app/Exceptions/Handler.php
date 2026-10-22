@@ -2,11 +2,9 @@
 
 namespace App\Exceptions;
 
+use Throwable;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Http\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
-use Throwable;
 
 class Handler extends ExceptionHandler
 {
@@ -32,12 +30,24 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return void
      */
-    public function render(mixed $request, Throwable $exception): JsonResponse
+    public function report(Throwable $exception)
+    {
+        parent::report($exception);
+    }
+
+    /**
+     * Render an exception into an HTTP response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Exception  $exception
+     * @return \Illuminate\Http\Response
+     */
+    public function render($request, Throwable $e)
     {
         $json = [
             'success' => false,
-            'status' => $exception->getCode(),
-            'message' => $exception->getMessage(),
+            'status' => $e->getCode(),
+            'message' => $e->getMessage(),
         ];
 
         return response()->json($json, 400);
@@ -50,7 +60,7 @@ class Handler extends ExceptionHandler
      * @param  \Illuminate\Auth\AuthenticationException  $exception
      * @return \Illuminate\Http\Response
      */
-    protected function unauthenticated(mixed $request, AuthenticationException $exception): Response
+    protected function unauthenticated($request, AuthenticationException $exception)
     {
         if ($request->expectsJson()) {
             return response()->json(['error' => 'Unauthenticated.'], 401);
